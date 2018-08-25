@@ -1,0 +1,11 @@
+<mat-form-field floatLabel="never" fxFlexFill>
+  <input type="text" placeholder="Search for an Actor, Actress or Movie..." aria-label="Number" matInput [formControl]="search" [matAutocomplete]="auto" [(ngModel)]="searchText">
+  <button mat-button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="goToResult($event)">
+    <mat-option *ngFor="let result of searchResults" [value]="result">
+      {{result.id}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

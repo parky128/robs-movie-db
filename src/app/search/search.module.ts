@@ -7,10 +7,10 @@ import {
   MatInputModule,
   MatIconModule
 } from '@angular/material';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {SearchComponent} from './search.component';
-import {SearchResultPersonComponent} from '../shared/search-result-person/search-result-person.component';
+import { SearchComponent } from './search.component';
+import { SearchResultPersonComponent } from '../shared/search-result-person/search-result-person.component';
 import { SearchResultMovieComponent } from '../shared/search-result-movie/search-result-movie.component';
 import { SearchResultTVComponent } from '../shared/search-result-tv/search-result-tv.component';
 

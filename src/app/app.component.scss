@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  flex-flow: column wrap;
+  min-height: 100vh;
+
+  & .app-name {
+    background-color: black;
+    border-radius: 4px;
+    & > span {
+      padding: 16px;
+    }
+  }
+
+  & > .router-outlet-container {
+    flex: 1;
+    padding: 16px; //store in global!
+  }
+
+  & > .app-footer {
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-top: solid 1px;
+    & > img {
+      height: 40px;
+      padding-right: 8px;
+    }
+    & a {
+      color: unset;
+      text-decoration: unset;
+    }
+  }
+}

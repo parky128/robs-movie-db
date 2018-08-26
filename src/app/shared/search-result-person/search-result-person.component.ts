@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ApiConfigService } from '../../services/api-config.service';
+import { PersonSearchResult } from '../../models/PersonSearchResult.model';
 
 @Component({
   selector: 'app-search-result-person',
@@ -8,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 
 export class SearchResultPersonComponent implements OnInit {
 
-  ngOnInit() {
+  @Input() personSearchResult: PersonSearchResult;
+  profileUrlPath: string;
 
+  constructor(private apiConfigService: ApiConfigService) {
+  }
+
+  ngOnInit() {
+    this.profileUrlPath = this.apiConfigService.getMoviePosterUrl(this.personSearchResult.profile_path);
   }
 }

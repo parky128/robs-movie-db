@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ApiConfigService } from '../../services/api-config.service';
+import { TVSearchResult } from '../../models/TvSearchResult.model';
 
 @Component({
   selector: 'app-search-result-tv',
@@ -8,7 +10,13 @@ import { Component, OnInit } from '@angular/core';
 
 export class SearchResultTVComponent implements OnInit {
 
-  ngOnInit() {
+  @Input() tvSearchResult: TVSearchResult;
+  posterUrlPath: string;
 
+  constructor(private apiConfigService: ApiConfigService) {
+  }
+
+  ngOnInit() {
+    this.posterUrlPath = this.apiConfigService.getMoviePosterUrl(this.tvSearchResult.poster_path);
   }
 }

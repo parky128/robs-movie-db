@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { ApiConfigService } from '../../services/api-config.service';
 import { PersonSearchResult } from '../../models/PersonSearchResult.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-result-person',
@@ -13,7 +14,15 @@ export class SearchResultPersonComponent implements OnInit {
   @Input() personSearchResult: PersonSearchResult;
   profileUrlPath: string;
 
-  constructor(private apiConfigService: ApiConfigService) {
+  constructor(
+    private apiConfigService: ApiConfigService,
+    private router: Router
+  ) {
+  }
+
+  @HostListener('click') onClick() {
+    console.log(this.personSearchResult);
+    this.router.navigate(['/person/', this.personSearchResult.id]);
   }
 
   ngOnInit() {

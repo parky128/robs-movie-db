@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TmdbSearchService } from '../services/tmdb-search.service';
 import { debounceTime } from 'rxjs/operators';
-import { TmdbSearchResults } from '../models/tmdbSearchResults.model';
+import { SearchResults } from '../models/SearchResults.model';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
 
 @Component({
@@ -13,7 +13,6 @@ import { MatAutocompleteSelectedEvent } from '@angular/material';
 export class SearchComponent implements OnInit {
 
   search = new FormControl();
-  searchText = '';
   searchResults: Array<any> = [];
 
   constructor(
@@ -22,6 +21,10 @@ export class SearchComponent implements OnInit {
 
   public goToResult = (event: MatAutocompleteSelectedEvent) => {
     console.log(event.option.value);
+    this.clearSearch();
+  }
+
+  public clearSearch = () => {
     this.search.setValue('');
   }
 
@@ -31,7 +34,7 @@ export class SearchComponent implements OnInit {
     ).subscribe((searchText: string) => {
       console.log(searchText);
       if(searchText.length > 0) {
-        this.tmdbSearch.performSearch(searchText).toPromise().then((response: TmdbSearchResults) => {
+        this.tmdbSearch.performSearch(searchText).toPromise().then((response: SearchResults) => {
           console.log(response.results);
           this.searchResults = response.results;
         });

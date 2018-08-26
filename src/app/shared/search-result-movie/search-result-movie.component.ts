@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { MovieSearchResult } from '../../models/MovieSearchResult.model';
 import { ApiConfigService } from '../../services/api-config.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-result-movie',
@@ -9,14 +10,22 @@ import { ApiConfigService } from '../../services/api-config.service';
 })
 
 export class SearchResultMovieComponent implements OnInit {
-  @Input() movieSearchResults: MovieSearchResult;
+  @Input() movieSearchResult: MovieSearchResult;
   posterUrlPath: string;
 
-  constructor(private apiConfigService: ApiConfigService) {
+  constructor(
+    private apiConfigService: ApiConfigService,
+    private router: Router
+  ) {
+  }
+
+  @HostListener('click') onClick() {
+    console.log(this.movieSearchResult);
+    this.router.navigate(['/movie/', this.movieSearchResult.id]);
   }
 
   ngOnInit() {
-    this.posterUrlPath = this.apiConfigService.getMoviePosterUrl(this.movieSearchResults.poster_path);
+    this.posterUrlPath = this.apiConfigService.getMoviePosterUrl(this.movieSearchResult.poster_path);
   }
 
   public getDefaultImage = () => {

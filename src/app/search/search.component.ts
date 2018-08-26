@@ -19,11 +19,6 @@ export class SearchComponent implements OnInit {
     private tmdbSearch: TmdbSearchService
   ) { }
 
-  public goToResult = (event: MatAutocompleteSelectedEvent) => {
-    console.log(event.option.value);
-    this.clearSearch();
-  }
-
   public clearSearch = () => {
     this.search.setValue('');
   }
@@ -32,10 +27,8 @@ export class SearchComponent implements OnInit {
     this.search.valueChanges.pipe(
       debounceTime(300)
     ).subscribe((searchText: string) => {
-      console.log(searchText);
-      if(searchText.length > 0) {
+      if (searchText.length > 0) {
         this.tmdbSearch.performSearch(searchText).toPromise().then((response: SearchResults) => {
-          console.log(response.results);
           this.searchResults = response.results;
         });
       } else {

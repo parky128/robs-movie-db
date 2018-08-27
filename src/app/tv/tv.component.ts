@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TVShow } from '../models/TVShow.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tv',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TvComponent implements OnInit {
 
-  constructor() { }
+  tvShow: TVShow;
+
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.tvShow = this.route.snapshot.data.tvShow;
   }
 
 }

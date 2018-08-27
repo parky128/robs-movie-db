@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material';
 
 import { PersonComponent } from './person.component';
-import {PersonRoutingModule} from './person-routing.module';
+import { PersonRoutingModule } from './person-routing.module';
 
 @NgModule({
   imports: [

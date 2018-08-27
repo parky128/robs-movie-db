@@ -21,11 +21,19 @@ export class ApiConfigService {
       });
   }
 
-  public getMoviePosterUrl = (imagePath: string) => {
+  public getSearchResultImageUrl = (imagePath: string) => {
     return `${this.apiConfig.images.base_url}w92/${imagePath}`;
+  }
+
+  public getMoviePosterUrl = (imagePath: string) => {
+    return `${this.apiConfig.images.base_url}w185/${imagePath}`;
   }
 
   public getPersonProfileUrl = (imagePath: string) => {
     return `${this.apiConfig.images.base_url}w185${imagePath}`;
+  }
+
+  public getCastProfileUrl = (imagePath: string) => {
+    return `${this.apiConfig.images.base_url}w45${imagePath}`;
   }
 }

@@ -1,6 +1,29 @@
-<h2>
-  {{tvShow.name}}
-</h2>
-<p>
-  {{tvShow.overview}}
-</p>
+<mat-card>
+    <mat-card-header>
+      <mat-card-title><h2>{{tvShow.name}}</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="profile-details">
+        <img src="{{tvShowPosterUrl}}">
+        <div>
+          <p>
+            {{tvShow.overview}}
+          </p>
+          <div>Seasons: {{tvShow.number_of_seasons}}</div>
+          <div>Episodes: {{tvShow.number_of_episodes}}</div>
+          <div>Status: {{tvShow.status}}</div>
+        </div>
+      </div>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <h3>Cast ({{tvShow.credits.cast.length}})</h3>
+        </mat-expansion-panel-header>
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let cast of tvShow.credits.cast">
+            <a routerLink="/person/{{cast.id}}">{{cast.name}}</a>
+            <span *ngIf="cast.character"> - {{cast.character}} &nbsp;</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-card-content>
+  </mat-card>

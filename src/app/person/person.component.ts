@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Person } from '../models/Person.model';
 import { ApiConfigService } from '../services/api-config.service';
@@ -8,7 +8,7 @@ import { ApiConfigService } from '../services/api-config.service';
   templateUrl: './person.component.html',
   styleUrls: ['./person.component.scss']
 })
-export class PersonComponent implements OnInit, AfterContentInit {
+export class PersonComponent implements OnInit {
   person: Person;
   personProfileUrl: string;
 
@@ -19,14 +19,6 @@ export class PersonComponent implements OnInit, AfterContentInit {
 
   ngOnInit() {
     this.person = this.route.snapshot.data.person;
-  }
-
-  ngAfterContentInit() {
-    this.getProfileUrl();
-  }
-
-  public getProfileUrl = () => {
     this.personProfileUrl = this.apiConfigService.getPersonProfileUrl(this.person.profile_path);
   }
-
 }

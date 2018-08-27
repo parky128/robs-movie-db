@@ -12,6 +12,8 @@ export class TmdbMovieService {
   }
 
   public getMovie = (id: string) => {
-    return this.http.get(`${environment.apiUrl}/${environment.apiVersion}/movie/${id}?api_key=${environment.apiKey}`);
+    return this.http.get(
+      `${environment.apiUrl}/${environment.apiVersion}/movie/${id}?` +
+      `api_key=${environment.apiKey}&append_to_response=credits`);
   }
 }

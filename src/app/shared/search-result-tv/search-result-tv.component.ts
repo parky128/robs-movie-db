@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { ApiConfigService } from '../../services/api-config.service';
 import { TVSearchResult } from '../../models/TvSearchResult.model';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-result-tv',
@@ -15,17 +14,11 @@ export class SearchResultTVComponent implements OnInit {
   posterUrlPath: string;
 
   constructor(
-    private apiConfigService: ApiConfigService,
-    private router: Router
+    private apiConfigService: ApiConfigService
   ) {
   }
 
-  @HostListener('click') onClick() {
-    console.log(this.tvSearchResult);
-    this.router.navigate(['/tv/', this.tvSearchResult.id]);
-  }
-
   ngOnInit() {
-    this.posterUrlPath = this.apiConfigService.getMoviePosterUrl(this.tvSearchResult.poster_path);
+    this.posterUrlPath = this.apiConfigService.getSearchResultImageUrl(this.tvSearchResult.poster_path);
   }
 }

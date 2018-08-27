@@ -2,6 +2,7 @@ import { Genre } from './Genre.model';
 import { ProductionCompany } from './ProductionCompany.model';
 import { Country } from './Country.model';
 import { SpokenLanguage } from './SpokenLanguage.model';
+import { MovieCredits } from './MovieCredits.model';
 
 export class Movie {
   adult?: boolean;
@@ -26,4 +27,5 @@ export class Movie {
   video?: true;
   vote_average?: number;
   vote_count?: number;
+  credits?: MovieCredits;
 }

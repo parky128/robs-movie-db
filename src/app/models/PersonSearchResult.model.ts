@@ -6,7 +6,7 @@ export class PersonSearchResult {
   adult: boolean;
   id: number;
   media_type: string;
-  known_for: MovieSearchResult | TVSearchResult;
+  known_for: Array<MovieSearchResult | TVSearchResult>;
   name: string;
   popularity: number;
 }

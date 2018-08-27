@@ -12,6 +12,8 @@ export class TmdbTvService {
   }
 
   public getTv = (id: string) => {
-    return this.http.get(`${environment.apiUrl}/${environment.apiVersion}/tv/${id}?api_key=${environment.apiKey}`);
+    return this.http.get(
+      `${environment.apiUrl}/${environment.apiVersion}/tv/${id}?` +
+      `api_key=${environment.apiKey}&append_to_response=credits`);
   }
 }

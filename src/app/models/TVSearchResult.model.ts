@@ -1,3 +1,5 @@
+import { TVCredits } from './TVCredits.model';
+
 export class TVSearchResult {
   poster_path: string;
   popularity: number;
@@ -13,4 +15,5 @@ export class TVSearchResult {
   vote_count: number;
   name: string;
   original_name: string;
+  credits?: TVCredits;
 }

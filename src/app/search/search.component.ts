@@ -4,6 +4,11 @@ import { TmdbSearchService } from '../services/tmdb-search.service';
 import { debounceTime } from 'rxjs/operators';
 import { SearchResults } from '../models/SearchResults.model';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { Router } from '@angular/router';
+import { Movie } from '../models/Movie.model';
+import { MovieSearchResult } from '../models/MovieSearchResult.model';
+import { PersonSearchResult } from '../models/PersonSearchResult.model';
+import { TVSearchResult } from '../models/TVSearchResult.model';
 
 @Component({
   selector: 'app-search',
@@ -16,11 +21,22 @@ export class SearchComponent implements OnInit {
   searchResults: Array<any> = [];
 
   constructor(
-    private tmdbSearch: TmdbSearchService
+    private tmdbSearch: TmdbSearchService,
+    private router: Router
   ) { }
 
   public clearSearch = () => {
     this.search.setValue('');
+  }
+
+  public goToMovie = (movie: MovieSearchResult) => {
+    this.router.navigateByUrl(`/movie/${movie.id}`);
+  }
+  public goToPerson = (person: PersonSearchResult) => {
+    this.router.navigateByUrl(`/person/${person.id}`);
+  }
+  public goToTVShow = (tv: TVSearchResult) => {
+    this.router.navigateByUrl(`/tv/${tv.id}`);
   }
 
   ngOnInit() {

@@ -1,7 +1,28 @@
-<h2>
-    {{movie.title}}
-  </h2>
-  <p>
-    {{movie.tagline}}
-  </p>
-  
+<mat-card>
+  <mat-card-header>
+    <mat-card-title><h2>{{movie.title}}</h2></mat-card-title>
+    <mat-card-subtitle>{{movie.tagline}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="profile-details">
+      <img src="{{moviePosterUrl}}">
+      <div>
+        <p>
+          {{movie.overview}}
+        </p>
+      </div>
+    </div>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <h3>Cast ({{movie.credits.cast.length}})</h3>
+      </mat-expansion-panel-header>
+      <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let cast of movie.credits.cast">
+          <img src="{{getCastMemberImageUrl(cast)}}" *ngIf="cast.profile_path">
+          <a routerLink="/person/{{cast.id}}">{{cast.name}}</a>&nbsp;
+          <span *ngIf="cast.character">- {{cast.character}}</span>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,19 @@
+:host {
+  & .profile-details {
+   display: flex;
+   flex: 1;
+    .label-value {
+      display: flex;
+      flex-direction: column;
+      > label {
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+      }
+      > span, div {
+        font-size: 14px;
+      }
+    }
+  }
+}

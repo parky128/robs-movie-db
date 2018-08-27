@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material';
+import {
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatExpansionModule
+} from '@angular/material';
+import {MatListModule} from '@angular/material/list';
 
 import { PersonComponent } from './person.component';
 import { PersonRoutingModule } from './person-routing.module';
@@ -9,6 +15,10 @@ import { PersonRoutingModule } from './person-routing.module';
   imports: [
     CommonModule,
     MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatExpansionModule,
+    MatListModule,
     PersonRoutingModule
   ],
   declarations: [

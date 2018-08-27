@@ -6,12 +6,12 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 
-export class TmdbPersonService {
+export class TmdbMovieService {
 
   constructor(private http: HttpClient) {
   }
 
-  public getPerson = (id: string) => {
-    return this.http.get(`${environment.apiUrl}/${environment.apiVersion}/person/${id}?api_key=${environment.apiKey}`);
+  public getMovie = (id: string) => {
+    return this.http.get(`${environment.apiUrl}/${environment.apiVersion}/movie/${id}?api_key=${environment.apiKey}`);
   }
 }

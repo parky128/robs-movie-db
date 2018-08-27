@@ -1,3 +1,6 @@
+import { MovieCredits } from './MovieCredits.model';
+import { TVCredits } from './TVCredits.model';
+
 export class Person {
   birthday?: string;
   known_for_department?: boolean;
@@ -13,5 +16,6 @@ export class Person {
   adult?: boolean;
   imdb_id?: string;
   homepage?: string;
-  movie_credits: any;
+  movie_credits?: MovieCredits;
+  tv_credits?: TVCredits;
 }

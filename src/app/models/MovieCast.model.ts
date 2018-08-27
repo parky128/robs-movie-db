@@ -1,4 +1,4 @@
-export class Cast {
+export class MovieCast {
   character?: string;
   credit_id?: string;
   release_date?: string;

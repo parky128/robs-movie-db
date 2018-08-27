@@ -1,6 +1,6 @@
-import { Cast } from './Cast.model';
+import { MovieCast } from './MovieCast.model';
 
 export class MovieCredits {
-  cast?: Array<Cast>;
+  cast?: Array<MovieCast>;
   crew?: Array<any>;
 }

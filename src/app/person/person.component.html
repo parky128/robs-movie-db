@@ -20,11 +20,20 @@
         <mat-expansion-panel-header>
           <h3>Movie Appearances ({{person.movie_credits.cast.length}})</h3>
         </mat-expansion-panel-header>
-        <mat-list role="list" dense>
+        <mat-list role="list">
           <mat-list-item role="listitem" *ngFor="let cast of person.movie_credits.cast">
             <span *ngIf="cast.character">{{cast.character}} in&nbsp;</span><a routerLink="/movie/{{cast.id}}">{{cast.title}} ({{cast.release_date | date : 'yyyy'}})</a></mat-list-item>
         </mat-list>
       </mat-expansion-panel>
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <h3>TV Appearances ({{person.tv_credits.cast.length}})</h3>
+          </mat-expansion-panel-header>
+          <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let cast of person.tv_credits.cast">
+              <span *ngIf="cast.character">{{cast.character}} in&nbsp;</span><a routerLink="/tv/{{cast.id}}">{{cast.name}} ({{cast.first_air_date | date : 'yyyy'}})</a></mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
     </div>
     
   </mat-card-content>

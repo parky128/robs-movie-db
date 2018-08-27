@@ -13,7 +13,8 @@ export class TmdbPersonService {
 
   public getPerson = (id: string) => {
     return this.http.get(
-      `${environment.apiUrl}/${environment.apiVersion}/person/${id}?api_key=${environment.apiKey}&append_to_response=movie_credits`
+      `${environment.apiUrl}/${environment.apiVersion}/person/${id}` +
+        `?api_key=${environment.apiKey}&append_to_response=movie_credits,tv_credits`
     );
   }
 }

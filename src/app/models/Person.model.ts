@@ -13,4 +13,5 @@ export class Person {
   adult?: boolean;
   imdb_id?: string;
   homepage?: string;
+  movie_credits: any;
 }

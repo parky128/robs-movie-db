@@ -1,3 +1,5 @@
+@import "../globals";
+
 :host {
   display: flex;
   flex-flow: column wrap;
@@ -7,25 +9,25 @@
     background-color: black;
     border-radius: 4px;
     & > span {
-      padding: 16px;
+      padding: $base-padding;
     }
   }
 
   & > .router-outlet-container {
     flex: 1;
-    padding: 16px; //store in global!
+    padding: $base-padding;
   }
 
   & > .app-footer {
-    padding: 16px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border-top: solid 1px;
+    font-size: 13px;
+    margin-bottom: 8px;
     & > img {
       height: 40px;
-      padding-right: 8px;
+      padding-right: $base-padding/2;
     }
     & a {
       color: unset;

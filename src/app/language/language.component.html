@@ -1,10 +1,10 @@
 <mat-form-field floatLabel="never">
   <mat-select (selectionChange)="changeLanguage($event.value)" [(ngModel)]="selectedLanguage">
     <mat-select-trigger>
-      <img src="../../assets/images/{{selectedLanguage}}.svg" height="18px"/><span>{{ 'LANGUAGE.'+ selectedLanguage | translate:param }}</span>
+      <img src="../../assets/images/{{selectedLanguage}}.svg" height="18px"/><span>{{ 'LANGUAGE.'+ selectedLanguage | uppercase | translate }}</span>
     </mat-select-trigger>
     <mat-option *ngFor="let language of availableLanguages" [value]="language">
-        <img src="../../assets/images/{{language}}.svg" height="18px"/><span>&nbsp;{{ 'LANGUAGE.'+ language | translate:param }}</span>
+        <img src="../../assets/images/{{language}}.svg" height="18px"/><span>&nbsp;{{ 'LANGUAGE.'+ language | uppercase | translate }}</span>
     </mat-option>
   </mat-select>
 </mat-form-field>

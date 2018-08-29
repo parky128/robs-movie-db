@@ -5,6 +5,7 @@ import {
   MatExpansionModule
 } from '@angular/material';
 import {MatListModule} from '@angular/material/list';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { MovieComponent } from './movie.component';
 import { MovieRoutingModule } from './movie-routing.module';
@@ -15,7 +16,8 @@ import { MovieRoutingModule } from './movie-routing.module';
     MatCardModule,
     MatExpansionModule,
     MatListModule,
-    MovieRoutingModule
+    MovieRoutingModule,
+    TranslateModule
   ],
   declarations: [
     MovieComponent

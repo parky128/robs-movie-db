@@ -13,6 +13,7 @@ import { SearchComponent } from './search.component';
 import { SearchResultPersonComponent } from '../shared/search-result-person/search-result-person.component';
 import { SearchResultMovieComponent } from '../shared/search-result-movie/search-result-movie.component';
 import { SearchResultTVComponent } from '../shared/search-result-tv/search-result-tv.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { SearchResultTVComponent } from '../shared/search-result-tv/search-resul
     MatInputModule,
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule
   ],
   declarations: [
     SearchComponent,

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-language',
@@ -9,22 +8,21 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LanguageComponent implements OnInit {
 
-  language = new FormControl();
   public availableLanguages: Array<string> = [];
   selectedLanguage = 'en';
 
   constructor(
-    private translate: TranslateService
+    private languageService: LanguageService
   ) { }
 
   public changeLanguage = (language: string) => {
     console.log(language);
-    this.translate.use(language);
+    this.languageService.setLanguage(language);
   }
 
   ngOnInit() {
     this.availableLanguages.push('en', 'de');
-    this.language.valueChanges.subscribe(value => { console.log(value); });
+    this.selectedLanguage = this.languageService.getLanguage();
   }
 
 }

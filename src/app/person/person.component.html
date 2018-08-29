@@ -6,8 +6,8 @@
     <div class="profile-details">
       <img src="{{personProfileUrl}}">
       <div>
-        <div>Born: {{person.birthday | date : 'longDate'}} in {{person.place_of_birth}}</div>
-        <div *ngIf="person.deathday">Died on {{person.deathday | date : 'longDate'}}</div>
+        <div>{{'PERSON.BORN' | translate}}: {{person.birthday | date : 'longDate'}} in {{person.place_of_birth}}</div>
+        <div *ngIf="person.deathday">{{'PERSON.DIED' | translate}} {{person.deathday | date : 'longDate'}}</div>
 
         <p>
           {{person.biography}}
@@ -16,21 +16,21 @@
     </div>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <h3>Movie Appearances ({{person.movie_credits.cast.length}})</h3>
+        <h3>{{'PERSON.MOVIE_APPEARANCES' | translate}} ({{person.movie_credits.cast.length}})</h3>
       </mat-expansion-panel-header>
       <mat-list role="list">
         <mat-list-item role="listitem" *ngFor="let cast of person.movie_credits.cast">
-          <span *ngIf="cast.character">{{cast.character}} in&nbsp;</span><a routerLink="/movie/{{cast.id}}">{{cast.title}}
+          <span *ngIf="cast.character">{{cast.character}} {{'IN' | translate}}&nbsp;</span><a routerLink="/movie/{{cast.id}}">{{cast.title}}
             ({{cast.release_date | date : 'yyyy'}})</a></mat-list-item>
       </mat-list>
     </mat-expansion-panel>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <h3>TV Appearances ({{person.tv_credits.cast.length}})</h3>
+        <h3>{{'PERSON.TV_APPEARANCES' | translate}} ({{person.tv_credits.cast.length}})</h3>
       </mat-expansion-panel-header>
       <mat-list role="list">
         <mat-list-item role="listitem" *ngFor="let cast of person.tv_credits.cast">
-          <span *ngIf="cast.character">{{cast.character}} in&nbsp;</span><a routerLink="/tv/{{cast.id}}">{{cast.name}}
+          <span *ngIf="cast.character">{{cast.character}} {{'IN' | translate}}&nbsp;</span><a routerLink="/tv/{{cast.id}}">{{cast.name}}
             ({{cast.first_air_date | date : 'yyyy'}})</a></mat-list-item>
       </mat-list>
     </mat-expansion-panel>

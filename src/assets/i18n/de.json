@@ -1,7 +1,27 @@
 {
   "TEST": "Wonderbar!!!",
+  "CAST": "Besetzung",
+  "OVERVIEW": "Überblick",
+  "IN": "Im",
+  "SEARCH_PLACEHOLDER": "Suche nach einem Schauspieler, einer Schauspielerin oder einem Film...",
   "LANGUAGE": {
-    "en": "Englisch",
-    "de": "Deutsche"
+    "EN": "Englisch",
+    "DE": "Deutsche"
+  },
+  "MOVIE": {
+    "RELEASED": "Freigegeben",
+    "BUDGET": "Budget",
+    "RUNTIME": "Laufzeit"
+  },
+  "PERSON": {
+    "BORN": "Geboren",
+    "DIED": "Gestorben an",
+    "MOVIE_APPEARANCES": "Filmauftritte",
+    "TV_APPEARANCES": "Fernsehauftritte"
+  },
+  "TV_SHOW": {
+    "SEASONS": "Jahreszeiten",
+    "EPISODES": "Episoden",
+    "STATUS": "Status"
   }
 }

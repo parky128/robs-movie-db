@@ -8,18 +8,18 @@
       <img src="{{moviePosterUrl}}">
       <div>
         <span *ngFor="let genre of movie.genres; last as isLast">{{genre.name}}<span *ngIf="!isLast"> | </span></span>
-        <div>Released on: {{movie.release_date | date : 'longDate'}}</div>
-        <div>Budget: {{movie.budget | currency }}</div>
-        <div>Runtime: {{movie.runtime | currency }}</div>
+        <div>{{'MOVIE.RELEASED' | translate}}: {{movie.release_date | date : 'longDate'}}</div>
+        <div>{{'MOVIE.BUDGET' | translate}}: {{movie.budget | currency }}</div>
+        <div>{{'MOVIE.RUNTIME' | translate}}: {{movie.runtime | currency }}</div>
       </div>
     </div>
-    <h2>Overview</h2>
+    <h2>{{'OVERVIEW' | translate}}</h2>
     <p>
       {{movie.overview}}
     </p>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <h3>Cast ({{movie.credits.cast.length}})</h3>
+        <h3>{{'CAST' | translate}} ({{movie.credits.cast.length}})</h3>
       </mat-expansion-panel-header>
       <mat-list role="list">
         <mat-list-item role="listitem" *ngFor="let cast of movie.credits.cast">

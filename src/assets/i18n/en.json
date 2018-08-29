@@ -1,7 +1,27 @@
 {
   "TEST": "Wow look at me!",
+  "CAST": "Cast",
+  "OVERVIEW": "Overview",
+  "IN": "In",
+  "SEARCH_PLACEHOLDER": "Search for an Actor, Actress or Movie...",
   "LANGUAGE": {
-    "en": "English",
-    "de": "German"
+    "EN": "English",
+    "DE": "German"
+  },
+  "MOVIE": {
+    "RELEASED": "Released",
+    "BUDGET": "Budget",
+    "RUNTIME": "Runtime"
+  },
+  "PERSON": {
+    "BORN": "Born",
+    "DIED": "Died on",
+    "MOVIE_APPEARANCES": "Movie Appearances",
+    "TV_APPEARANCES": "TV Appearances"
+  },
+  "TV_SHOW": {
+    "SEASONS": "Seasons",
+    "EPISODES": "Episodes",
+    "STATUS": "Status"
   }
 }

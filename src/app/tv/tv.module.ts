@@ -5,6 +5,7 @@ import {
   MatExpansionModule
 } from '@angular/material';
 import {MatListModule} from '@angular/material/list';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { TvComponent } from './tv.component';
 import { TvRoutingModule } from './tv-routing.module';
@@ -15,7 +16,8 @@ import { TvRoutingModule } from './tv-routing.module';
     MatCardModule,
     MatExpansionModule,
     MatListModule,
-    TvRoutingModule
+    TvRoutingModule,
+    TranslateModule
   ],
   declarations: [
     TvComponent

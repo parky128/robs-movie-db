@@ -10,12 +10,13 @@ const routes: Routes = [
     component: PersonComponent,
     resolve: {
       person: PersonRouteResolver
-    }
+    },
+    runGuardsAndResolvers: 'always'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule],
   providers: [
     PersonRouteResolver

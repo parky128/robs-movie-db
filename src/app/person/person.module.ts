@@ -7,6 +7,7 @@ import {
   MatExpansionModule
 } from '@angular/material';
 import {MatListModule} from '@angular/material/list';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { PersonComponent } from './person.component';
 import { PersonRoutingModule } from './person-routing.module';
@@ -19,7 +20,8 @@ import { PersonRoutingModule } from './person-routing.module';
     MatInputModule,
     MatExpansionModule,
     MatListModule,
-    PersonRoutingModule
+    PersonRoutingModule,
+    TranslateModule
   ],
   declarations: [
     PersonComponent

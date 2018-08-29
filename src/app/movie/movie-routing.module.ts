@@ -10,12 +10,13 @@ const routes: Routes = [
     component: MovieComponent,
     resolve: {
       movie: MovieRouteResolver
-    }
+    },
+    runGuardsAndResolvers: 'always'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule],
   providers: [
     MovieRouteResolver

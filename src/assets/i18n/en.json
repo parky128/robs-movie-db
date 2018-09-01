@@ -1,5 +1,6 @@
 {
-  "TEST": "Wow look at me!",
+  "WELCOME": "Welcome to Robs Movie Database",
+  "FOOTER_MESSAGE": "This product uses the TMDb API but is not endorsed or certified by",
   "CAST": "Cast",
   "OVERVIEW": "Overview",
   "IN": "In",

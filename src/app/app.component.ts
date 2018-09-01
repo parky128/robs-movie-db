@@ -1,31 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import { LanguageService } from './services/language.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { LanguageService } from './services/language/language.service';
+import { SpinnerService } from './services/spinner/spinner.service';
+import { Observable, Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'my-tmdb-app'; //translate this?!
+export class AppComponent implements OnInit, OnDestroy {
+
+  showSpinner = false;
+  private spinnerSubscription: Subscription;
 
   constructor(
     private translate: TranslateService,
     private languageService: LanguageService,
-    private router: Router,
-    private activateRoute: ActivatedRoute
+    private spinnerService: SpinnerService
   ) {
-    // translate.setDefaultLang('en');
-    // translate.use('en');
-    //this.languageService.selectedLanguage.subscribe(selectedLanguage => {
-      this.translate.setDefaultLang(this.languageService.getLanguage());
-      //window.location.reload();
-      //this.router.navigateByUrl(location.pathname);
-    //});
+    this.translate.setDefaultLang(this.languageService.getLanguage());
   }
 
   ngOnInit() {
+    this.spinnerSubscription = this.spinnerService.showSpinner.subscribe((show) => {
+      this.showSpinner = show;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.spinnerSubscription) {
+      this.spinnerSubscription.unsubscribe();
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { ApiConfigService } from '../../services/api-config.service';
+import { ApiConfigService } from '../../services/api-config/api-config.service';
 import { PersonSearchResult } from '../../models/PersonSearchResult.model';
 import { MovieSearchResult } from '../../models/MovieSearchResult.model';
 import { TVSearchResult } from '../../models/TVSearchResult.model';

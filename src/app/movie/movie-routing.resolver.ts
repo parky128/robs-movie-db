@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Resolve} from '@angular/router';
 import { ActivatedRouteSnapshot } from '@angular/router';
 
-import { TmdbMovieService } from '../services/tmdb-movie.service';
+import { TmdbMovieService } from '../services/tmdb-movie/tmdb-movie.service';
 
 @Injectable()
 export class MovieRouteResolver implements Resolve<any> {

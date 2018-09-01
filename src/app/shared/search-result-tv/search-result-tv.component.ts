@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
-import { ApiConfigService } from '../../services/api-config.service';
+import { ApiConfigService } from '../../services/api-config/api-config.service';
 import { TVSearchResult } from '../../models/TvSearchResult.model';
 
 @Component({

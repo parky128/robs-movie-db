@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LanguageService } from '../services/language.service';
+import { LanguageService } from '../services/language/language.service';
 
 @Component({
   selector: 'app-language',

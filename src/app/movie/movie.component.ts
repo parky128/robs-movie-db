@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../models/Movie.model';
-import { ApiConfigService } from '../services/api-config.service';
+import { ApiConfigService } from '../services/api-config/api-config.service';
 import { MovieCast } from '../models/MovieCast.model';
 import { Subscription } from 'rxjs';
-import { LanguageService } from '../services/language.service';
-import { TmdbMovieService } from '../services/tmdb-movie.service';
+import { LanguageService } from '../services/language/language.service';
+import { TmdbMovieService } from '../services/tmdb-movie/tmdb-movie.service';
 
 @Component({
   selector: 'app-movie',

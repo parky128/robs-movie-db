@@ -1,9 +1,9 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { TVShow } from '../models/TVShow.model';
 import { ActivatedRoute } from '@angular/router';
-import { ApiConfigService } from '../services/api-config.service';
-import { LanguageService } from '../services/language.service';
-import { TmdbTvService } from '../services/tmdb-tv.service';
+import { ApiConfigService } from '../services/api-config/api-config.service';
+import { LanguageService } from '../services/language/language.service';
+import { TmdbTvService } from '../services/tmdb-tv/tmdb-tv.service';
 import { Subscription } from 'rxjs';
 
 @Component({

@@ -1,9 +1,9 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Person } from '../models/Person.model';
-import { ApiConfigService } from '../services/api-config.service';
-import { LanguageService } from '../services/language.service';
-import { TmdbPersonService } from '../services/tmdb-person.service';
+import { ApiConfigService } from '../services/api-config/api-config.service';
+import { LanguageService } from '../services/language/language.service';
+import { TmdbPersonService } from '../services/tmdb-person/tmdb-person.service';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-person',

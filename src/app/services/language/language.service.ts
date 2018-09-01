@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class LanguageService {
 
   public setLanguage = (language: string) => {
     window.localStorage.setItem('language', language);
-    this.translate.setDefaultLang(language;)
+    this.translate.setDefaultLang(language);
     this.selectedLanguage.next(language);
   }
 

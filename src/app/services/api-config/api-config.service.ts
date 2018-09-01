@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { APIConfigModel } from '../models/APIConfig.model';
+import { APIConfigModel } from '../../models/APIConfig.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ApiConfigService {
   }
 
   public getApiConfig = () => {
-    return this.http.get('https://api.themoviedb.org/3/configuration?api_key=7b157a93d615cd3ca2b3312055fa550c')
+    return this.http.get(`https://api.themoviedb.org/3/configuration?api_key=${environment.apiKey}`)
       .toPromise()
       .then((apiConfigResponse: APIConfigModel) => {
         this.apiConfig = apiConfigResponse;
@@ -30,10 +31,10 @@ export class ApiConfigService {
   }
 
   public getPersonProfileUrl = (imagePath: string) => {
-    return `${this.apiConfig.images.base_url}w185${imagePath}`;
+    return `${this.apiConfig.images.base_url}w185/${imagePath}`;
   }
 
   public getCastProfileUrl = (imagePath: string) => {
-    return `${this.apiConfig.images.base_url}w45${imagePath}`;
+    return `${this.apiConfig.images.base_url}w45/${imagePath}`;
   }
 }

@@ -9,7 +9,9 @@ import {
   MatChipsModule,
   MatCheckboxModule,
   MatButtonModule,
-  MatListModule
+  MatListModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -29,6 +31,8 @@ import { SearchResultMovieModule } from '../shared/search-result-movie/search-re
     MatCheckboxModule,
     MatButtonModule,
     MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule,
     AdvancedSearchRoutingModule,

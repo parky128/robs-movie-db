@@ -66,14 +66,12 @@ export class AdvancedSearchComponent implements OnInit {
   }
 
   public setGenres = (genre: Genre) => {
-
     const recIndex = this.selectedGenres.indexOf(genre);
     if (recIndex > -1) {
       this.selectedGenres.splice(recIndex, 1);
     } else {
       this.selectedGenres.push(genre);
     }
-    console.log(this.selectedGenres);
   }
 
   public goToMovie = (movie: MovieSearchResult) => {

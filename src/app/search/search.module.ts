@@ -11,9 +11,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { SearchComponent } from './search.component';
 import { SearchResultPersonComponent } from '../shared/search-result-person/search-result-person.component';
-import { SearchResultMovieComponent } from '../shared/search-result-movie/search-result-movie.component';
 import { SearchResultTVComponent } from '../shared/search-result-tv/search-result-tv.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { SearchResultMovieModule } from '../shared/search-result-movie/search-result-movie.module';
 
 @NgModule({
   imports: [
@@ -25,12 +25,12 @@ import { TranslateModule } from '@ngx-translate/core';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    SearchResultMovieModule
   ],
   declarations: [
     SearchComponent,
     SearchResultPersonComponent,
-    SearchResultMovieComponent,
     SearchResultTVComponent
   ],
   exports: [SearchComponent],

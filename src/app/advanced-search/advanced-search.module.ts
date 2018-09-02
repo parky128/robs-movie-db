@@ -8,12 +8,14 @@ import {
   MatIconModule,
   MatChipsModule,
   MatCheckboxModule,
-  MatButtonModule
+  MatButtonModule,
+  MatListModule
 } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdvancedSearchComponent } from './advanced-search.component';
 import { AdvancedSearchRoutingModule } from './advanced-search-routing.module';
+import { SearchResultMovieModule } from '../shared/search-result-movie/search-result-movie.module';
 
 @NgModule({
   imports: [
@@ -26,10 +28,12 @@ import { AdvancedSearchRoutingModule } from './advanced-search-routing.module';
     MatChipsModule,
     MatCheckboxModule,
     MatButtonModule,
+    MatListModule,
     FormsModule,
     ReactiveFormsModule,
     AdvancedSearchRoutingModule,
-    TranslateModule
+    TranslateModule,
+    SearchResultMovieModule
   ],
   declarations: [
     AdvancedSearchComponent

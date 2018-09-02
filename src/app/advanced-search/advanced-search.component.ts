@@ -6,9 +6,10 @@ import { PersonSearchResult } from '../models/PersonSearchResult.model';
 import { SearchResults } from '../models/SearchResults.model';
 import { MovieSearchResult } from '../models/MovieSearchResult.model';
 import { TVSearchResult } from '../models/TVSearchResult.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Genre } from '../models/Genre.model';
 import { TmdbDiscoverService } from '../services/tmdb-discover/tmdb-discover.service';
+import { Movie } from '../models/Movie.model';
 
 @Component({
   selector: 'app-advanced-search',
@@ -21,13 +22,16 @@ export class AdvancedSearchComponent implements OnInit {
   selectedPersons: Array<PersonSearchResult> = [];
   genres: Array<Genre> = [];
   search = new FormControl();
+  movieSearchResults: SearchResults;
 
   private selectedGenres: Array<Genre> = [];
+  private searchTerm = '';
 
   constructor(
     private tmdbSearch: TmdbSearchService,
     private tmdbDiscover: TmdbDiscoverService,
     private route: ActivatedRoute,
+    private router: Router
   ) { }
 
 
@@ -55,9 +59,9 @@ export class AdvancedSearchComponent implements OnInit {
       return genre.id;
     }).join();
     searchTerms.push(`with_genres=${genreIds}`);
-
-    this.tmdbDiscover.movieSearch(searchTerms.join('&')).subscribe((results) => {
-      console.log(results)
+    this.searchTerm = searchTerms.join('&');
+    this.tmdbDiscover.movieSearch(this.searchTerm).subscribe((searchResults: SearchResults) => {
+      this.movieSearchResults = searchResults;
     });
   }
 
@@ -70,6 +74,18 @@ export class AdvancedSearchComponent implements OnInit {
       this.selectedGenres.push(genre);
     }
     console.log(this.selectedGenres);
+  }
+
+  public goToMovie = (movie: MovieSearchResult) => {
+    this.router.navigateByUrl(`/movie/${movie.id}`);
+  }
+
+  public getResultsPage = (page: number) => {
+    console.log(page)
+    this.searchTerm += `&page=${page}`;
+    this.tmdbDiscover.movieSearch(this.searchTerm).subscribe((searchResults: SearchResults) => {
+      this.movieSearchResults = searchResults;
+    });
   }
 
   private searchPersons = (searchText: string) => {

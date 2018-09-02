@@ -1,5 +1,6 @@
 {
-  "WELCOME": "Willkommen zu Robs Movie Database",
+  "WELCOME": "Willkommen zu Robs Movie Database. Ihre One-Stop-Show für alle Ihre Film-und TV-Show Trivia braucht!",
+  "INSTRUCTIONS": "Verwenden Sie die Schnellsuchleiste oben oder für mehr benutzerdefinierte Abfragen verwenden Sie die Erweiterte Suche auch oben.",
   "FOOTER_MESSAGE": "Dieses Produkt verwendet die TMDb-API, wird aber nicht empfohlen oder zertifiziert",
   "CAST": "Besetzung",
   "OVERVIEW": "Überblick",

@@ -1,0 +1,12 @@
+:host {
+  mat-card-content {
+    display: flex;
+    flex-direction: row;
+    > div {
+      flex: 1;
+    }
+  }
+  .instruction-text {
+    margin-bottom: 16px;
+  }
+}

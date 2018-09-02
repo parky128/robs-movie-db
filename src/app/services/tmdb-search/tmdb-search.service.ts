@@ -15,9 +15,16 @@ export class TmdbSearchService {
   ) {
   }
 
-  public performSearch = (searchTerm: string) => {
+  public multiSearch = (searchTerm: string) => {
     return this.http.get(
       `${environment.apiUrl}/${environment.apiVersion}/search/multi?api_key=${environment.apiKey}` +
       `&query=${searchTerm}&language=${this.languageService.getLanguage()}`);
   }
+
+  public personSearch = (searchTerm: string) => {
+    return this.http.get(
+      `${environment.apiUrl}/${environment.apiVersion}/search/person?api_key=${environment.apiKey}` +
+      `&query=${searchTerm}&language=${this.languageService.getLanguage()}`);
+  }
+
 }

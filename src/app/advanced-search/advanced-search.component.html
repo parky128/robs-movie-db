@@ -1,0 +1,56 @@
+<mat-card>
+  <mat-card-header>
+    <h2>Advanced Search</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <fieldset>
+      <legend>Search by Actors\Actresses</legend>
+      <mat-form-field floatLabel="never">
+        <input type="text" aria-label="Number" matInput [formControl]="search" [matAutocomplete]="auto">
+        <mat-placeholder class="placeholder"><mat-icon>search</mat-icon>Search for Actors and Actresses</mat-placeholder>
+        <button mat-button *ngIf="search.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addSelectedPerson($event.option.value)" autoActiveFirstOption>
+          <mat-option *ngFor="let person of personSearchResults" [value]="person">
+            {{person.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-chip-list>
+        <mat-chip *ngFor="let person of selectedPersons">
+          {{person.name}}
+          <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="removeSelectedPerson(person)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-chip>
+      </mat-chip-list>
+    </fieldset>
+    
+    <fieldset>
+      <legend>And\Or Genres:</legend>
+      <div class="checkbox-container">
+        <mat-checkbox *ngFor="let genre of genres" (change)="setGenres(genre)">{{genre.name}}</mat-checkbox>
+      </div>
+      
+    </fieldset>
+    <fieldset>
+      <legend>Date Range:</legend>
+    </fieldset>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="performSearch()">Search</button>
+    <button mat-raised-button color="primary" (click)="clearSearch()">Clear</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <h2>Search Results</h2>
+  </mat-card-header>
+  <mat-card-content>
+  </mat-card-content>
+</mat-card>
+
+
+

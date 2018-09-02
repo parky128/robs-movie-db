@@ -43,7 +43,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private performSearch = (searchText: string) => {
-    this.tmdbSearch.performSearch(searchText).toPromise().then((response: SearchResults) => {
+    this.tmdbSearch.multiSearch(searchText).toPromise().then((response: SearchResults) => {
       this.searchResults = response.results;
     });
   }

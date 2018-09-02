@@ -16,6 +16,7 @@ import { MovieModule } from './movie/movie.module';
 import { TvModule } from './tv/tv.module';
 import { PersonModule } from './person/person.module';
 import { APIRequestInterceptorService } from './services/api-request-interceptor/api-request-interceptor.service';
+import { AdvancedSearchModule } from './advanced-search/advanced-search.module';
 
 export function appConfigProvider(apiConfigService: ApiConfigService) {
   return () => apiConfigService.getApiConfig();
@@ -37,6 +38,7 @@ export function appConfigProvider(apiConfigService: ApiConfigService) {
     MovieModule,
     TvModule,
     PersonModule,
+    AdvancedSearchModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

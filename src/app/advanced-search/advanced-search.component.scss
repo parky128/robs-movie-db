@@ -1,0 +1,13 @@
+:host {
+  .checkbox-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    mat-checkbox {
+      width: 50%;
+    }
+  }
+  .mat-chip-list-wrapper {
+    flex-direction: row;
+  }
+}

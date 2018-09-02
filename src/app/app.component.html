@@ -13,6 +13,9 @@
 </mat-toolbar>
 <a routerLink="/advanced-search"></a>
 <div class="router-outlet-container">
+  <div class="home-nav-link-container">
+    <a routerLink='/home' *ngIf="showHomeNavLink">Home</a>
+  </div>
   <router-outlet></router-outlet>
 </div>
 <div class="app-footer">

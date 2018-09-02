@@ -3,8 +3,9 @@ import {TranslateService} from '@ngx-translate/core';
 import { LanguageService } from './services/language/language.service';
 import { SpinnerService } from './services/spinner/spinner.service';
 import { Observable, Subscription } from 'rxjs';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { MovieSearchResult } from './models/MovieSearchResult.model';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   showSpinner = false;
   showSearch = true;
-  showAdvancedSearch = true;
+  showHomeNavLink = true;
+
   private spinnerSubscription: Subscription;
 
   constructor(
@@ -33,6 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
     this.spinnerSubscription = this.spinnerService.showSpinner.subscribe((show) => {
       this.showSpinner = show;
     });
@@ -40,9 +43,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.router.events.pipe(
       filter((event: Event) => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) =>  {
-      console.log(event);
       this.showSearch = event.url !== '/advanced-search';
-      this.showAdvancedSearch = event.url !== '/advanced-search';
+      this.showHomeNavLink = event.url !== '/home';
     });
   }
 

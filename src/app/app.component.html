@@ -3,7 +3,11 @@
     <div class="app-name">
       <span>RMDb</span>
     </div>
-    <app-search></app-search>
+    <app-search *ngIf="showSearch"></app-search>
+    <button mat-raised-button (click)="goToAdvancedSearch()" *ngIf="showSearch">
+      Advanced Search
+    </button>
+    <div class="spacer" *ngIf="!showSearch"></div>
     <app-language></app-language>
   </mat-toolbar-row>
 </mat-toolbar>

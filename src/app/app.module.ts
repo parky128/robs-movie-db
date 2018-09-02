@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS  } from '@angular/common/http';
-import { MatToolbarModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatToolbarModule, MatProgressSpinnerModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -33,6 +33,8 @@ export function appConfigProvider(apiConfigService: ApiConfigService) {
     AppRoutingModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
+    MatIconModule,
+    MatButtonModule,
     SearchModule,
     HomeModule,
     MovieModule,

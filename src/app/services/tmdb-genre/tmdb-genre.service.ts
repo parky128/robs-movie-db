@@ -16,8 +16,10 @@ export class TmdbGenreService {
   }
 
   public getGenres = () => {
-    const url = `${environment.apiUrl}/${environment.apiVersion}/genre/movie/list?api_key=`
-    + `${environment.apiKey}&language=${this.languageService.getLanguage()}`;
+    const url = [
+      `${environment.apiUrl}/${environment.apiVersion}/genre/movie/list?api_key=`,
+      `${environment.apiKey}&language=${this.languageService.getLanguage()}`
+    ].join('');
     return this.http.get(url);
   }
 }

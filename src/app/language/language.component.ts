@@ -16,7 +16,6 @@ export class LanguageComponent implements OnInit {
   ) { }
 
   public changeLanguage = (language: string) => {
-    console.log(language);
     this.languageService.setLanguage(language);
   }
 

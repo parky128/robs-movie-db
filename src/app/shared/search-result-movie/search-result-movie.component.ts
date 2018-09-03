@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MovieSearchResult } from '../../models/MovieSearchResult.model';
 import { ApiConfigService } from '../../services/api-config/api-config.service';
 
@@ -19,9 +19,5 @@ export class SearchResultMovieComponent implements OnInit {
 
   ngOnInit() {
     this.posterUrlPath = this.apiConfigService.getSearchResultImageUrl(this.movieSearchResult.poster_path);
-  }
-
-  public getDefaultImage = () => {
-    this.posterUrlPath = '../../assets/images/powered-by-tmdb.svg';
   }
 }

@@ -16,8 +16,11 @@ export class TmdbMovieService {
   }
 
   public getMovie = (id: string) => {
-    const url = `${environment.apiUrl}/${environment.apiVersion}/movie/${id}?api_key=`
-    + `${environment.apiKey}&append_to_response=credits&language=${this.languageService.getLanguage()}`;
+    const url = [
+      `${environment.apiUrl}/${environment.apiVersion}/movie/${id}`,
+      `?api_key=${environment.apiKey}&append_to_response=credits&language=${this.languageService.getLanguage()}`
+    ].join('');
     return this.http.get(url);
   }
+
 }

@@ -16,8 +16,10 @@ export class TmdbDiscoverService {
   }
 
   public movieSearch = (searchTerm: string) => {
-    return this.http.get(
-      `${environment.apiUrl}/${environment.apiVersion}/discover/movie?api_key=${environment.apiKey}` +
-      `&${searchTerm}&language=${this.languageService.getLanguage()}`);
+    const url = [
+      `${environment.apiUrl}/${environment.apiVersion}/discover/movie?api_key=${environment.apiKey}`,
+      `&${searchTerm}&language=${this.languageService.getLanguage()}`
+    ].join('');
+    return this.http.get(url);
   }
 }

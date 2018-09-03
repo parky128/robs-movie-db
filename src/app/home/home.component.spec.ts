@@ -1,25 +1,67 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HomeComponent } from './home.component';
+import { MatCardModule, MatListModule } from '@angular/material';
+import { TranslateModule } from '@ngx-translate/core';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ApiConfigService } from '../services/api-config/api-config.service';
 
-// import { ComeComponent } from './come.component';
+describe('HomeComponent Tests:', () => {
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
 
-// describe('ComeComponent', () => {
-//   let component: ComeComponent;
-//   let fixture: ComponentFixture<ComeComponent>;
+  const movies = [{title: 'Star Wars'}];
+  const shows = [{name: 'Game of Thrones'}];
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ ComeComponent ]
-//     })
-//     .compileComponents();
-//   }));
+  const activateRouteStub = {
+    snapshot: {
+      data: {
+        trendingMovies: movies,
+        trendingShows: shows
+      }
+    }
+  };
+  const mockApiConfigService = {
+    getSearchResultImageUrl: jasmine.createSpy()
+  };
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(ComeComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ HomeComponent ],
+      imports: [
+        MatCardModule,
+        MatListModule,
+        TranslateModule.forRoot(),
+        RouterTestingModule
+      ],
+      providers: [
+        { provide: ActivatedRoute, useValue: activateRouteStub },
+        { provide: ApiConfigService, useValue: mockApiConfigService }
+      ]
+    })
+    .compileComponents();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(HomeComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  describe('On initialisation of the component', () => {
+    it('should assign the value of trendingMovies from the currently activated route data property', () => {
+      expect(component.trendingMovies).toEqual(activateRouteStub.snapshot.data.trendingMovies);
+    });
+    it('should assign the value of trendingShows from the currently activated route data property', () => {
+      expect(component.trendingShows).toEqual(activateRouteStub.snapshot.data.trendingShows);
+    });
+  });
+
+  describe('When retrieving a posterUrlPath for a given movie record', () => {
+    it('should call getSearchResultImageUrl on the apiConfigService using the supplied movie poster_path value', () => {
+      const movie = {title: 'Star Wars', poster_path: '/bla.jpg'};
+      component.posterUrlPath(movie);
+      expect(mockApiConfigService.getSearchResultImageUrl).toHaveBeenCalledWith(movie.poster_path);
+    });
+  });
+});

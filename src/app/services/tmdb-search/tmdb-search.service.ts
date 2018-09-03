@@ -16,15 +16,18 @@ export class TmdbSearchService {
   }
 
   public multiSearch = (searchTerm: string) => {
-    return this.http.get(
-      `${environment.apiUrl}/${environment.apiVersion}/search/multi?api_key=${environment.apiKey}` +
-      `&query=${searchTerm}&language=${this.languageService.getLanguage()}`);
+    const url = [
+      `${environment.apiUrl}/${environment.apiVersion}/search/multi?api_key=${environment.apiKey}`,
+      `&query=${searchTerm}&language=${this.languageService.getLanguage()}`
+    ].join('');
+    return this.http.get(url);
   }
 
   public personSearch = (searchTerm: string) => {
-    return this.http.get(
-      `${environment.apiUrl}/${environment.apiVersion}/search/person?api_key=${environment.apiKey}` +
-      `&query=${searchTerm}&language=${this.languageService.getLanguage()}`);
+    const url = [
+      `${environment.apiUrl}/${environment.apiVersion}/search/person?api_key=${environment.apiKey}`,
+      `&query=${searchTerm}&language=${this.languageService.getLanguage()}`
+    ].join('');
+    return this.http.get(url);
   }
-
 }

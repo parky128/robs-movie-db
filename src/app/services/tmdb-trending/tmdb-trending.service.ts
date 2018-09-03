@@ -16,9 +16,10 @@ export class TmdbTrendingService {
   }
 
   public getWeeklyTrend = (mediaType: string) => {
-    return this.http.get(
-      `${environment.apiUrl}/${environment.apiVersion}/trending/${mediaType}/week` +
-        `?api_key=${environment.apiKey}&language=` + this.languageService.getLanguage()
-    );
+    const url = [
+      `${environment.apiUrl}/${environment.apiVersion}/trending/${mediaType}/week`,
+      `?api_key=${environment.apiKey}&language=` + this.languageService.getLanguage()
+    ].join('');
+    return this.http.get(url);
   }
 }

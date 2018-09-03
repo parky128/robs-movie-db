@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { ApiConfigService } from '../../services/api-config/api-config.service';
 import { PersonSearchResult } from '../../models/PersonSearchResult.model';
@@ -25,14 +25,16 @@ export class SearchResultPersonComponent implements OnInit {
 
   ngOnInit() {
     this.profileUrlPath = this.apiConfigService.getSearchResultImageUrl(this.personSearchResult.profile_path);
-    this.knownFor = this.personSearchResult.known_for.map((item) => {
-      let result: MovieSearchResult | TVSearchResult ;
-      if (item.media_type === 'movie') {
-        result  = (<MovieSearchResult>item);
-        return `${result.title} (${this.datePipe.transform(result.release_date, 'yyyy')})`;
-      }
-      result = (<TVSearchResult>item);
-      return `${result.name} (${this.datePipe.transform(result.first_air_date, 'yyyy')})`;
-    }).join(', ');
+    if (this.personSearchResult.known_for) {
+      this.knownFor = this.personSearchResult.known_for.map((item) => {
+        let result;
+        if (item.media_type === 'movie') {
+          result  = (<MovieSearchResult>item);
+          return `${result.title} (${this.datePipe.transform(result.release_date, 'yyyy')})`;
+        }
+        result = (<TVSearchResult>item);
+        return `${result.name} (${this.datePipe.transform(result.first_air_date, 'yyyy')})`;
+      }).join(', ');
+    }
   }
 }

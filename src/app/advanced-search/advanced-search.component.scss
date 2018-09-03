@@ -1,3 +1,5 @@
+@import "../../globals";
+
 :host {
   .checkbox-container {
     display: flex;
@@ -12,8 +14,7 @@
   }
   .search-result-item {
     :hover{
-      cursor: pointer;
-      background-color: rgba($color: #000000, $alpha: .04 )
+      @include mat-nav-list-item-hover()
     }
   }
 }

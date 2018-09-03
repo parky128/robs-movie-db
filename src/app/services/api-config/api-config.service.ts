@@ -37,4 +37,8 @@ export class ApiConfigService {
   public getCastProfileUrl = (imagePath: string) => {
     return `${this.apiConfig.images.base_url}w45/${imagePath}`;
   }
+
+  public getTrendingItemImageUrl = (imagePath: string) => {
+    return `${this.apiConfig.images.base_url}w45/${imagePath}`;
+  }
 }

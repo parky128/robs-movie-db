@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit {
     private apiConfigService: ApiConfigService
   ) { }
 
-  public posterUrlPath = (movie) => {
-    this.apiConfigService.getSearchResultImageUrl(movie.poster_path);
+  public posterUrlPath = (posterPath: string) => {
+    return this.apiConfigService.getTrendingItemImageUrl(posterPath);
   }
 
   ngOnInit() {

@@ -1,3 +1,5 @@
+@import "../../globals";
+
 :host {
   mat-card-content {
     display: flex;
@@ -7,6 +9,24 @@
     }
   }
   .instruction-text {
-    margin-bottom: 16px;
+    margin-bottom: $base-padding;
+  }
+  .mat-list-item {
+    height: unset;
+    &:hover {
+      @include mat-nav-list-item-hover()
+    }
+    .trending-item {
+      display: flex;
+      flex-direction: row;
+      > div {
+        padding-left: $base-padding;
+      }
+    }
+    .trending-item-scores {
+      flex: 1;
+      font-size: 12px;
+      padding-top: $base-padding/2;
+    }
   }
 }

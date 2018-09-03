@@ -5,16 +5,36 @@
 <mat-card>
   <mat-card-content>
     <div>
-      <h2>Trending Movies</h2>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/movie/{{movie.id}}" *ngFor="let movie of trendingMovies; let i = index;">{{i+1}}. {{movie.title}} ({{movie.release_date | date : 'yyyy'}})</a>
-      </mat-nav-list>
+      <h2>Trending Movies (last 7 days)</h2>
+      <mat-list class="trending">
+        <mat-list-item *ngFor="let movie of trendingMovies; let i = index;">
+          <div class="trending-item">
+            <div>
+              <img [src]="posterUrlPath(movie.poster_path)" *ngIf="movie.poster_path" />
+            </div>
+            <div>
+              <div>{{i+1}}. <a routerLink="/movie/{{movie.id}}">{{movie.title}} ({{movie.release_date | date : 'yyyy'}})</a></div>
+              <div class="trending-item-scores">popularity: {{movie.popularity}} | vote avg: {{movie.vote_average}} | vote count: {{movie.vote_count}}</div>
+            </div>
+          </div>
+        </mat-list-item>
+      </mat-list>
     </div>
     <div>
-      <h2>Trending TV Shows</h2>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/tv/{{show.id}}" *ngFor="let show of trendingShows; let i = index;">{{i+1}}. {{show.name}} ({{show.first_air_date | date : 'yyyy'}})</a>
-      </mat-nav-list>
+      <h2>Trending TV Shows (last 7 days)</h2>
+      <mat-list class="trending">
+        <mat-list-item *ngFor="let show of trendingShows; let i = index;">
+          <div class="trending-item">
+            <div>
+              <img [src]="posterUrlPath(show.poster_path)" *ngIf="show.poster_path" />
+            </div>
+            <div>
+              <div>{{i+1}}. <a routerLink="/tv/{{show.id}}">{{show.name}} ({{show.first_air_date | date : 'yyyy'}})</a></div>
+              <div class="trending-item-scores">popularity: {{show.popularity}} | show avg: {{show.vote_average}} | vote count: {{show.vote_count}}</div>
+            </div>
+          </div>
+        </mat-list-item>
+      </mat-list>
     </div>
   </mat-card-content>
 </mat-card>

@@ -35,7 +35,7 @@ export class TvComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.languageSubscription = this.languageService.selectedLanguage.subscribe(selectedLanguage => {
+    this.languageSubscription = this.languageService.selectedLanguage.subscribe(() => {
       this.tmdbTvService.getTv(this.route.snapshot.paramMap.get('id')).subscribe((tvShow: TVShow) => {
         this.tvShow = tvShow;
         this.setTvShowPosterUrl();

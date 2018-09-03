@@ -1,18 +1,16 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Movie } from '../models/Movie.model';
 import { ApiConfigService } from '../services/api-config/api-config.service';
 import { MovieCast } from '../models/MovieCast.model';
 import { Subscription } from 'rxjs';
-import { LanguageService } from '../services/language/language.service';
-import { TmdbMovieService } from '../services/tmdb-movie/tmdb-movie.service';
 
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.scss']
 })
-export class MovieComponent implements OnInit, AfterViewInit, OnDestroy {
+export class MovieComponent implements OnInit {
 
   movie: Movie;
   moviePosterUrl: string;
@@ -21,9 +19,7 @@ export class MovieComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private apiConfigService: ApiConfigService,
-    private languageService: LanguageService,
-    private tmdbMovieService: TmdbMovieService
+    private apiConfigService: ApiConfigService
   ) {
   }
 
@@ -39,20 +35,4 @@ export class MovieComponent implements OnInit, AfterViewInit, OnDestroy {
     this.movie = this.route.snapshot.data.movie;
     this.setMoviePosterUrl();
   }
-
-  ngAfterViewInit() {
-    this.languageSubscription = this.languageService.selectedLanguage.subscribe(selectedLanguage => {
-      this.tmdbMovieService.getMovie(this.route.snapshot.paramMap.get('id')).subscribe((movie: Movie) => {
-        this.movie = movie;
-        this.setMoviePosterUrl();
-      });
-    });
-  }
-
-  ngOnDestroy() {
-    if (this.languageSubscription) {
-      this.languageSubscription.unsubscribe();
-    }
-  }
-
 }

@@ -1,12 +1,16 @@
 @import "../../globals";
 
 :host {
+  .actors-search {
+    width: 50%
+  }
   .checkbox-container {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
+    padding-top:16px;
     mat-checkbox {
-      width: 50%;
+      width: 33%;
     }
   }
   .mat-chip-list-wrapper {
@@ -17,4 +21,23 @@
       @include mat-nav-list-item-hover()
     }
   }
+  .criteria-section {
+    background-color: rgba(black, 0.04);
+    margin-top: 16px;
+    padding: 16px;
+    span {
+      margin-right: 16px;
+    }
+  }
+  .button-actions {
+    display: flex;
+    justify-content: space-between;
+    button:first-of-type {
+      margin-right: 16px;
+    }
+  }
+  .search-results {
+    margin-top: 16px;
+  }
+  
 }

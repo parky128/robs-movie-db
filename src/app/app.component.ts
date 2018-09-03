@@ -18,6 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
   showHomeNavLink = true;
 
   private spinnerSubscription: Subscription;
+  private languageSubscription: Subscription;
 
   constructor(
     private translate: TranslateService,
@@ -38,6 +39,10 @@ export class AppComponent implements OnInit, OnDestroy {
       this.showSpinner = show;
     });
 
+    this.languageSubscription = this.languageService.selectedLanguage.subscribe(() => {
+      window.location.reload();
+    });
+
     this.router.events.pipe(
       filter((event: Event) => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) =>  {
@@ -49,6 +54,9 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.spinnerSubscription) {
       this.spinnerSubscription.unsubscribe();
+    }
+    if (this.languageSubscription) {
+      this.languageSubscription.unsubscribe();
     }
   }
 }

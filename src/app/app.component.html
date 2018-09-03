@@ -5,7 +5,7 @@
     </div>
     <app-search *ngIf="showSearch"></app-search>
     <button mat-raised-button (click)="goToAdvancedSearch()" *ngIf="showSearch">
-      Advanced Search
+      {{'ADVANCED_SEARCH_BUTTON' | translate}}
     </button>
     <div class="spacer" *ngIf="!showSearch"></div>
     <app-language></app-language>
@@ -14,7 +14,7 @@
 <a routerLink="/advanced-search"></a>
 <div class="router-outlet-container">
   <div class="home-nav-link-container">
-    <a routerLink='/home' *ngIf="showHomeNavLink">Home</a>
+    <a routerLink='/home' *ngIf="showHomeNavLink">{{'HOME_NAV_LINK' | translate}}</a>
   </div>
   <router-outlet></router-outlet>
 </div>

@@ -22,7 +22,7 @@ describe('HomeComponent Tests:', () => {
     }
   };
   const mockApiConfigService = {
-    getSearchResultImageUrl: jasmine.createSpy()
+    getTrendingItemImageUrl: jasmine.createSpy()
   };
 
   beforeEach(() => {
@@ -58,10 +58,10 @@ describe('HomeComponent Tests:', () => {
   });
 
   describe('When retrieving a posterUrlPath for a given movie record', () => {
-    it('should call getSearchResultImageUrl on the apiConfigService using the supplied movie poster_path value', () => {
-      const movie = {title: 'Star Wars', poster_path: '/bla.jpg'};
-      component.posterUrlPath(movie);
-      expect(mockApiConfigService.getSearchResultImageUrl).toHaveBeenCalledWith(movie.poster_path);
+    it('should call getTrendingItemImageUrl on the apiConfigService using the supplied movie poster_path value', () => {
+      const posterPath = '/bla.jpg';
+      component.posterUrlPath(posterPath);
+      expect(mockApiConfigService.getTrendingItemImageUrl).toHaveBeenCalledWith(posterPath);
     });
   });
 });

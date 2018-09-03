@@ -32,14 +32,12 @@ describe('TvComponent', () => {
   const mockApiConfigService = {
     getMoviePosterUrl: jasmine.createSpy().and.callFake((imagePath: string) => {
       return `https://www.someapi.com/images/${imagePath}`;
+    }),
+    getCastProfileUrl: jasmine.createSpy().and.callFake((imagePath: string) => {
+      return `https://www.someapi.com/images/${imagePath}`;
     })
   };
-  const mockLanguageService = {
-    selectedLanguage: of('de')
-  };
-  const mockTmdbTvService = {
-    getTv: of(mockTvShow)
-  };
+
   const activateRouteStub = {
     snapshot: {
       paramMap: {
@@ -64,9 +62,7 @@ describe('TvComponent', () => {
       ],
       providers: [
         { provide: ActivatedRoute, useValue: activateRouteStub },
-        { provide: ApiConfigService, useValue: mockApiConfigService },
-        { provide: LanguageService, useValue: mockLanguageService },
-        { provide: TmdbTvService, useValue: mockTmdbTvService }
+        { provide: ApiConfigService, useValue: mockApiConfigService }
       ]
     })
     .compileComponents();
@@ -80,8 +76,15 @@ describe('TvComponent', () => {
 
   describe('On initialising the component', () => {
     it('should assign the value of the activate route tvShow data property', () => {
-      //expect(component.tvShow).toEqual(mockTvShow);
-      expect(1).toBe(1);
+      expect(component.tvShow).toEqual(mockTvShow);
+    });
+    it('should call getMoviePosterUrl on the apiConfigService the current tv show poster_path value', () => {
+      expect(mockApiConfigService.getMoviePosterUrl).toHaveBeenCalledWith(mockTvShow.poster_path);
+    });
+    it('should call assign the result of calling getMoviePosterUrl on the apiConfigService to the tvShowPosterUrl property', () => {
+      expect(component.tvShowPosterUrl).toEqual(`https://www.someapi.com/images/${mockTvShow.poster_path}`);
     });
   });
+  // describe('When', () => {
+  // });
 });

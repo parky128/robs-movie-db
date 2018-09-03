@@ -2,11 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import { LanguageService } from './services/language/language.service';
 import { SpinnerService } from './services/spinner/spinner.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { MovieSearchResult } from './models/MovieSearchResult.model';
-
 
 @Component({
   selector: 'app-root',

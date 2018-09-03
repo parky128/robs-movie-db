@@ -5,8 +5,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
-import { SearchResultMovieModule } from '../shared/search-result-movie/search-result-movie.module';
-import { SearchResultTVModule } from '../shared/search-result-tv/search-result-tv.module';
 
 @NgModule({
   imports: [
@@ -14,9 +12,7 @@ import { SearchResultTVModule } from '../shared/search-result-tv/search-result-t
     MatCardModule,
     MatListModule,
     TranslateModule,
-    RouterModule,
-    SearchResultMovieModule,
-    SearchResultTVModule
+    RouterModule
   ],
   declarations: [
     HomeComponent

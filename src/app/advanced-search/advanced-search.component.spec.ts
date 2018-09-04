@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async, tick, fakeAsync } from '@angular/core/testing';
 import { AdvancedSearchComponent } from './advanced-search.component';
 import { MatAutocompleteModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,13 +8,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { TmdbDiscoverService } from '../services/tmdb-discover/tmdb-discover.service';
 import { TmdbSearchService } from '../services/tmdb-search/tmdb-search.service';
-import { Component, NO_ERRORS_SCHEMA  } from '@angular/core';
+import { NO_ERRORS_SCHEMA  } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as moment from 'moment';
-
-// tslint:disable-next-line:use-input-property-decorator
-// @Component({ selector: 'app-search-result-movie', template: '', inputs: ['movieSearchResult', ''] })
-// class SearchResultMovieStubComponent { }
 
 describe('AdvancedSearchComponent Tests:', () => {
   let component: AdvancedSearchComponent;
@@ -29,11 +25,17 @@ describe('AdvancedSearchComponent Tests:', () => {
       }
     }
   };
+  const mockPersonSearchResults = {
+    results: [{name: 'Rob Parker'}]
+  };
+  const mockMovieSearchResults = {
+    results: [{title: 'Fight Club'}]
+  };
   const mockTmdbSearchService = {
-    personSearch: of()
+    personSearch: jasmine.createSpy().and.returnValue(of(mockPersonSearchResults))
   };
   const mockTmdbDiscoverService = {
-    movieSearch: jasmine.createSpy().and.returnValue(of({}))
+    movieSearch: jasmine.createSpy().and.returnValue(of(mockMovieSearchResults))
   };
   const mockRouter = {
     navigateByUrl: jasmine.createSpy()
@@ -94,19 +96,24 @@ describe('AdvancedSearchComponent Tests:', () => {
         component.toReleaseDate = moment('31-08-2018', 'DD-MM-YYYY');
         fixture.detectChanges();
         component.performSearch();
-        fixture.whenStable().then(() => {
-          const searchTerm = 'with_cast=1&with_genres=456&release_date.gte=2018-01-01&release_date.lte=2018-08-31';
-          expect(mockTmdbDiscoverService.movieSearch).toHaveBeenCalledWith(searchTerm);
-        });
+        const searchTerm = 'with_cast=1&with_genres=456&release_date.gte=2018-01-01&release_date.lte=2018-08-31';
+        expect(mockTmdbDiscoverService.movieSearch).toHaveBeenCalledWith(searchTerm);
       });
     });
     describe('when a person only a person has been set', () => {
-      it('should construct the correct search term and supply to the movieSearch', () => {
+      beforeEach(() => {
         component.selectedPersons = [{id: 1, name: 'Rob Parker'}];
         fixture.detectChanges();
         component.performSearch();
-        fixture.whenStable().then(() => {
-          const searchTerm = 'with_cast=1&with_genres=';
+      });
+      it('should construct the correct search term and supply to the movieSearch', () => {
+        const searchTerm = 'with_cast=1&with_genres=';
+        expect(mockTmdbDiscoverService.movieSearch).toHaveBeenCalledWith(searchTerm);
+      });
+      describe('and a new page of results is requested', () => {
+        it('should append the page number as new param to the existing search term', () => {
+          const searchTerm = 'with_cast=1&with_genres=&page=2';
+          component.getResultsPage(2);
           expect(mockTmdbDiscoverService.movieSearch).toHaveBeenCalledWith(searchTerm);
         });
       });
@@ -130,5 +137,15 @@ describe('AdvancedSearchComponent Tests:', () => {
       component.clearToReleaseDate();
       expect(component.toReleaseDateInput.value).toBe(null);
     });
+  });
+  describe('when the value of the search input changes', () => {
+    it('should perform a person search', fakeAsync(() => {
+      const personSearchTerm = 'brad';
+      component.search.setValue(personSearchTerm);
+      tick(3000);
+      fixture.detectChanges();
+      expect(mockTmdbSearchService.personSearch).toHaveBeenCalledWith(personSearchTerm);
+      expect(component.personSearchResults).toEqual(mockPersonSearchResults.results);
+    }));
   });
 });

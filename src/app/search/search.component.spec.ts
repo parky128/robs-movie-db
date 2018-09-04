@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async, tick, fakeAsync } from '@angular/core/testing';
 import { MatAutocompleteModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -10,13 +10,16 @@ import { TmdbSearchService } from '../services/tmdb-search/tmdb-search.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { of } from 'rxjs';
 
 describe('SearchComponent Tests:', () => {
   let component: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
-
+  const mockSearchResults = {
+    results: [{name: 'Rob Parker'}]
+  };
   const mockTmdbSearchService = {
-    multiSearch: jasmine.createSpy()
+    multiSearch: jasmine.createSpy().and.returnValue(of(mockSearchResults))
   };
   const mockRouter = {
     navigateByUrl: jasmine.createSpy()
@@ -52,25 +55,16 @@ describe('SearchComponent Tests:', () => {
     fixture.detectChanges();
   });
 
-  // describe('when the value of the search input changes to "brad"', () => {
-  //   it('should make a call to multiSearch on the tmdbSearch service', () => {
-  //     // fixture.nativeElement.querySelector()
-  //     // component.search.setValue('brad');
-  //     // fixture.detectChanges();
-  //     // fixture.whenStable().then(() => {
-  //     //   expect(mockTmdbSearchService.multiSearch).toHaveBeenCalledWith('brad');
-  //     // });
-  //     // expect(1).toBe(1);
-  //     const app = fixture.debugElement.componentInstance;
-  //     const el = fixture.nativeElement.querySelector('input');
-  //     el.value = 'something';
-  //     el.dispatchEvent(new Event('input'));
-  //     fixture.detectChanges();
-  //     fixture.whenStable().then(() => {
-  //       expect(mockTmdbSearchService.multiSearch).toHaveBeenCalledWith('brad');
-  //     });
-  //   });
-  // });
+  describe('when the value of the search input changes', () => {
+    it('should perform a person search using the supplied search term value', fakeAsync(() => {
+      const personSearchTerm = 'brad';
+      component.search.setValue(personSearchTerm);
+      tick(3000);
+      fixture.detectChanges();
+      expect(mockTmdbSearchService.multiSearch).toHaveBeenCalledWith(personSearchTerm);
+      expect(component.searchResults ).toEqual(mockSearchResults.results);
+    }));
+  });
   describe('when navigating to a movie record', () => {
     it('should call navigateByUrl on the router service using the supplied movie id', () => {
       const movieSearchResult = {id: 123};

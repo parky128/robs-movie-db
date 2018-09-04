@@ -1,4 +1,4 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 // import {
 //   MatToolbarModule, MatProgressSpinnerModule, MatIconModule, MatButtonModule
 // } from '@angular/material';
@@ -11,12 +11,7 @@
 // import { AppComponent } from './app.component';
 // import { LanguageService } from './services/language/language.service';
 // import { SpinnerService } from './services/spinner/spinner.service';
-// import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
-
-// // @Component({ selector: 'app-search', template: ''})
-// // class AppSearchStubComponent { }
-// // @Component({ selector: 'app-language', template: ''})
-// // class AppLanguageStubComponent { }
+// import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 // describe('AppComponent Tests: ', () => {
 //   let component: AppComponent;
@@ -31,7 +26,7 @@
 //     showSpinner: of(false)
 //   };
 
-//   beforeEach(() => {
+//   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
 //       declarations: [
 //         AppComponent
@@ -51,7 +46,7 @@
 //       ]
 //     })
 //     .compileComponents();
-//   });
+//   }));
 
 //   beforeEach(() => {
 //     fixture = TestBed.createComponent(AppComponent);

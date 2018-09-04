@@ -1,5 +1,5 @@
 import { SearchResultPersonComponent } from './search-result-person.component';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { ApiConfigService } from '../../services/api-config/api-config.service';
 import { DatePipe } from '@angular/common';
 
@@ -13,7 +13,7 @@ describe('SearchResultPersonComponent', () => {
     })
   };
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SearchResultPersonComponent ],
       imports: [
@@ -24,7 +24,7 @@ describe('SearchResultPersonComponent', () => {
       ]
     })
     .compileComponents();
-  });
+  }));
 
   const setupComponent = (person) => {
     fixture = TestBed.createComponent(SearchResultPersonComponent);

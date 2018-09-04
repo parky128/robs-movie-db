@@ -1,11 +1,5 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import {
-  MatToolbarModule,
-  MatAutocompleteModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatIconModule
-} from '@angular/material';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { MatAutocompleteModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -16,16 +10,6 @@ import { TmdbSearchService } from '../services/tmdb-search/tmdb-search.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-
-// // tslint:disable-next-line:use-input-property-decorator
-// @Component({ selector: 'app-search-result-person', template: '', inputs: ['personSearchResult', ''] })
-// class SearchResultPersonStubComponent { }
-// // tslint:disable-next-line:use-input-property-decorator
-// @Component({ selector: 'app-search-result-tv', template: '', inputs: ['tvSearchResult', ''] })
-// class SearchResultTvStubComponent { }
-// // tslint:disable-next-line:use-input-property-decorator
-// @Component({ selector: 'app-search-result-movie', template: '', inputs: ['movieSearchResult', ''] })
-// class SearchResultMovieStubComponent { }
 
 describe('SearchComponent Tests:', () => {
   let component: SearchComponent;
@@ -38,7 +22,7 @@ describe('SearchComponent Tests:', () => {
     navigateByUrl: jasmine.createSpy()
   };
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         SearchComponent
@@ -60,7 +44,7 @@ describe('SearchComponent Tests:', () => {
       ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchComponent);

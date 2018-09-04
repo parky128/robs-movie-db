@@ -1,5 +1,5 @@
 import { TmdbTrendingService } from './tmdb-trending.service';
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { TestBed, getTestBed, async } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { LanguageService } from '../language/language.service';
 
@@ -12,7 +12,7 @@ describe('TmdbTrendingService Tests:', () => {
     getLanguage: jasmine.createSpy().and.returnValue('en')
   };
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
@@ -23,7 +23,7 @@ describe('TmdbTrendingService Tests:', () => {
     injector = getTestBed();
     tmdbTrendingService = injector.get(TmdbTrendingService);
     httpMock = injector.get(HttpTestingController);
-  });
+  }));
 
   afterEach(() => {
     httpMock.verify();

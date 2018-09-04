@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 import { MatCardModule, MatListModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
@@ -26,7 +26,7 @@ describe('HomeComponent Tests:', () => {
     getTrendingItemImageUrl: jasmine.createSpy()
   };
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
       imports: [
@@ -42,7 +42,7 @@ describe('HomeComponent Tests:', () => {
       ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);

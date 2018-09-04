@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   MatFormFieldModule,
@@ -20,7 +20,7 @@ describe('LanguageComponent', () => {
     setLanguage: jasmine.createSpy()
   };
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LanguageComponent ],
       imports: [
@@ -35,7 +35,7 @@ describe('LanguageComponent', () => {
       ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LanguageComponent);

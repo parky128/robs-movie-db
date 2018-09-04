@@ -1,5 +1,5 @@
 import { TmdbMovieService } from './tmdb-movie.service';
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { TestBed, getTestBed, async } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Movie } from '../../models/Movie.model';
 import { LanguageService } from '../language/language.service';
@@ -17,7 +17,7 @@ describe('TmdbMovieService Tests:', () => {
     getLanguage: jasmine.createSpy().and.returnValue('en')
   };
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
@@ -28,7 +28,7 @@ describe('TmdbMovieService Tests:', () => {
     injector = getTestBed();
     tmdbMovieService = injector.get(TmdbMovieService);
     httpMock = injector.get(HttpTestingController);
-  });
+  }));
 
   afterEach(() => {
     httpMock.verify();

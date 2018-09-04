@@ -1,5 +1,5 @@
 import { SearchResultMovieComponent } from './search-result-movie.component';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { ApiConfigService } from '../../services/api-config/api-config.service';
 
 describe('SearchResultMovieComponent', () => {
@@ -13,7 +13,7 @@ describe('SearchResultMovieComponent', () => {
     })
   };
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SearchResultMovieComponent ],
       providers: [
@@ -21,7 +21,7 @@ describe('SearchResultMovieComponent', () => {
       ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchResultMovieComponent);

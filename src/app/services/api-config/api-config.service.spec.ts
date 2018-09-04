@@ -1,5 +1,5 @@
 import { ApiConfigService } from './api-config.service';
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { TestBed, getTestBed, async } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { APIConfigModel } from '../../models/APIConfig.model';
 
@@ -17,7 +17,7 @@ describe('ApiConfigService Tests:', () => {
 
   const imagePath = 'image.jpg';
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
@@ -27,7 +27,7 @@ describe('ApiConfigService Tests:', () => {
     injector = getTestBed();
     apiConfigService = injector.get(ApiConfigService);
     httpMock = injector.get(HttpTestingController);
-  });
+  }));
 
   afterEach(() => {
     httpMock.verify();

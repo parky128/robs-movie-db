@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import {
   MatCardModule,
   MatExpansionModule
@@ -44,7 +44,7 @@ describe('MovieComponent Tests:', () => {
     }
   };
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MovieComponent ],
       imports: [
@@ -61,7 +61,7 @@ describe('MovieComponent Tests:', () => {
       ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MovieComponent);

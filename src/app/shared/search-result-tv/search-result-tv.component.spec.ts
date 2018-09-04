@@ -1,5 +1,5 @@
 import { SearchResultTVComponent } from './search-result-tv.component';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { ApiConfigService } from '../../services/api-config/api-config.service';
 
 describe('SearchResultTVComponent', () => {
@@ -13,7 +13,7 @@ describe('SearchResultTVComponent', () => {
     })
   };
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SearchResultTVComponent ],
       providers: [
@@ -21,7 +21,7 @@ describe('SearchResultTVComponent', () => {
       ]
     })
     .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchResultTVComponent);

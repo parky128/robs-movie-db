@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { MovieSearchResult } from '../models/MovieSearchResult.model';
 import { PersonSearchResult } from '../models/PersonSearchResult.model';
 import { TVSearchResult } from '../models/TVSearchResult.model';
-import { LanguageService } from '../services/language/language.service';
 
 @Component({
   selector: 'app-search',
@@ -21,8 +20,7 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private tmdbSearch: TmdbSearchService,
-    private router: Router,
-    private languageService: LanguageService
+    private router: Router
   ) { }
 
   public clearSearch = () => {

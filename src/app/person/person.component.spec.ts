@@ -1,25 +1,73 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  MatCardModule,
+  MatExpansionModule
+} from '@angular/material';
+import {MatListModule} from '@angular/material/list';
+import { ActivatedRoute } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// import { PersonComponent } from './person.component';
+import { PersonComponent } from './person.component';
+import { ApiConfigService } from '../services/api-config/api-config.service';
 
-// describe('PersonComponent', () => {
-//   let component: PersonComponent;
-//   let fixture: ComponentFixture<PersonComponent>;
+describe('PersonComponent Tests:', () => {
+  let component: PersonComponent;
+  let fixture: ComponentFixture<PersonComponent>;
+  const mockPerson = {
+    name: 'Rob Parker',
+    profile_path: 'bla.jpg'
+  };
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ PersonComponent ]
-//     })
-//     .compileComponents();
-//   }));
+  const mockApiConfigService = {
+    getPersonProfileUrl: jasmine.createSpy().and.callFake((imagePath: string) => {
+      return `https://www.someapi.com/images/${imagePath}`;
+    })
+  };
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(PersonComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  const activateRouteStub = {
+    snapshot: {
+      data: {
+        person: mockPerson
+      }
+    }
+  };
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ PersonComponent ],
+      imports: [
+        MatCardModule,
+        MatExpansionModule,
+        MatListModule,
+        TranslateModule.forRoot(),
+        RouterTestingModule,
+        BrowserAnimationsModule
+      ],
+      providers: [
+        { provide: ActivatedRoute, useValue: activateRouteStub },
+        { provide: ApiConfigService, useValue: mockApiConfigService }
+      ]
+    })
+    .compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(PersonComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  describe('On initialising the component', () => {
+    it('should assign the value of the activate route person data property', () => {
+      expect(component.person).toEqual(mockPerson);
+    });
+    it('should call getPersonProfileUrl on the apiConfigService with the current person profile_path value', () => {
+      expect(mockApiConfigService.getPersonProfileUrl).toHaveBeenCalledWith(mockPerson.profile_path);
+    });
+    it('should call assign the result of calling getPersonProfileUrl on the apiConfigService to the personProfileUrl property', () => {
+      expect(component.personProfileUrl).toEqual(`https://www.someapi.com/images/${mockPerson.profile_path}`);
+    });
+  });
+});

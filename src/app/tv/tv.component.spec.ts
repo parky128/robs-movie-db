@@ -78,13 +78,18 @@ describe('TvComponent', () => {
     it('should assign the value of the activate route tvShow data property', () => {
       expect(component.tvShow).toEqual(mockTvShow);
     });
-    it('should call getMoviePosterUrl on the apiConfigService the current tv show poster_path value', () => {
+    it('should call getMoviePosterUrl on the apiConfigService with the current tv show poster_path value', () => {
       expect(mockApiConfigService.getMoviePosterUrl).toHaveBeenCalledWith(mockTvShow.poster_path);
     });
     it('should call assign the result of calling getMoviePosterUrl on the apiConfigService to the tvShowPosterUrl property', () => {
       expect(component.tvShowPosterUrl).toEqual(`https://www.someapi.com/images/${mockTvShow.poster_path}`);
     });
   });
-  // describe('When', () => {
-  // });
+  describe('When building a cast member image url', () => {
+    it('should call getCastProfileUrl on the apiConfigService the current tv show poster_path value', () => {
+      const castMember = {name: 'Rob Parker', profile_path: 'bla.jpg'};
+      component.getCastMemberImageUrl(castMember);
+      expect(mockApiConfigService.getCastProfileUrl).toHaveBeenCalledWith(castMember.profile_path);
+    });
+  });
 });

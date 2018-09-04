@@ -150,11 +150,9 @@ export class AdvancedSearchComponent implements OnInit {
       }
     });
     this.fromReleaseDateInput.valueChanges.subscribe((value) => {
-      console.log(value);
       this.fromReleaseDate = value;
     });
     this.toReleaseDateInput.valueChanges.subscribe((value) => {
-      console.log(value);
       this.toReleaseDate = value;
     });
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { ApiConfigService } from '../../services/api-config/api-config.service';
-import { TVSearchResult } from '../../models/TvSearchResult.model';
+import { TVSearchResult } from '../../models/TVSearchResult.model';
 
 @Component({
   selector: 'app-search-result-tv',

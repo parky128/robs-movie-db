@@ -1,4 +1,4 @@
-import { TVSearchResult } from './TvSearchResult.model';
+import { TVSearchResult } from './TVSearchResult.model';
 
 export class TrendingTVShowsResult {
   page: number;

@@ -1,7 +1,7 @@
 import { ApiConfigService } from './api-config.service';
 import { TestBed, getTestBed, async } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { APIConfigModel } from '../../models/APIConfig.model';
+import { APIConfigModel } from '../../models/apiConfig.model';
 
 describe('ApiConfigService Tests:', () => {
   let apiConfigService: ApiConfigService;

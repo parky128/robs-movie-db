@@ -20,6 +20,9 @@ export class Movie {
   poster_path?: string;
   production_companies?: Array<ProductionCompany>;
   production_countries?: Array<Country>;
+  release_date?: string;
+  revenue?: number;
+  runtime?: number;
   spoken_languges?: Array<SpokenLanguage>;
   status?: string;
   tagline?: string;

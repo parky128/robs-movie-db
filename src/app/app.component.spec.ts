@@ -11,12 +11,12 @@
 // import { AppComponent } from './app.component';
 // import { LanguageService } from './services/language/language.service';
 // import { SpinnerService } from './services/spinner/spinner.service';
-// import { Component } from '@angular/core';
+// import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 
-// @Component({ selector: 'app-search', template: ''})
-// class AppSearchStubComponent { }
-// @Component({ selector: 'app-language', template: ''})
-// class AppLanguageStubComponent { }
+// // @Component({ selector: 'app-search', template: ''})
+// // class AppSearchStubComponent { }
+// // @Component({ selector: 'app-language', template: ''})
+// // class AppLanguageStubComponent { }
 
 // describe('AppComponent Tests: ', () => {
 //   let component: AppComponent;
@@ -34,16 +34,9 @@
 //   beforeEach(() => {
 //     TestBed.configureTestingModule({
 //       declarations: [
-//         AppComponent,
-//         AppSearchStubComponent,
-//         AppLanguageStubComponent
+//         AppComponent
 //       ],
 //       imports: [
-//         MatToolbarModule,
-//         MatProgressSpinnerModule,
-//         MatIconModule,
-//         MatButtonModule,
-//         MatListModule,
 //         TranslateModule.forRoot(),
 //         RouterTestingModule,
 //         BrowserAnimationsModule
@@ -52,6 +45,9 @@
 //         TranslateService,
 //         { provide: SpinnerService, useValue: mockSpinnerService },
 //         { provide: LanguageService, useValue: mockLanguageService }
+//       ],
+//       schemas: [
+//         NO_ERRORS_SCHEMA
 //       ]
 //     })
 //     .compileComponents();

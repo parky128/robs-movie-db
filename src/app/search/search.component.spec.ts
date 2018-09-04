@@ -15,16 +15,17 @@ import { SearchComponent } from './search.component';
 import { TmdbSearchService } from '../services/tmdb-search/tmdb-search.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-// tslint:disable-next-line:use-input-property-decorator
-@Component({ selector: 'app-search-result-person', template: '', inputs: ['personSearchResult', ''] })
-class SearchResultPersonStubComponent { }
-// tslint:disable-next-line:use-input-property-decorator
-@Component({ selector: 'app-search-result-tv', template: '', inputs: ['tvSearchResult', ''] })
-class SearchResultTvStubComponent { }
-// tslint:disable-next-line:use-input-property-decorator
-@Component({ selector: 'app-search-result-movie', template: '', inputs: ['movieSearchResult', ''] })
-class SearchResultMovieStubComponent { }
+// // tslint:disable-next-line:use-input-property-decorator
+// @Component({ selector: 'app-search-result-person', template: '', inputs: ['personSearchResult', ''] })
+// class SearchResultPersonStubComponent { }
+// // tslint:disable-next-line:use-input-property-decorator
+// @Component({ selector: 'app-search-result-tv', template: '', inputs: ['tvSearchResult', ''] })
+// class SearchResultTvStubComponent { }
+// // tslint:disable-next-line:use-input-property-decorator
+// @Component({ selector: 'app-search-result-movie', template: '', inputs: ['movieSearchResult', ''] })
+// class SearchResultMovieStubComponent { }
 
 describe('SearchComponent Tests:', () => {
   let component: SearchComponent;
@@ -40,17 +41,10 @@ describe('SearchComponent Tests:', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        SearchComponent,
-        SearchResultMovieStubComponent,
-        SearchResultPersonStubComponent,
-        SearchResultTvStubComponent
+        SearchComponent
       ],
       imports: [
-        MatToolbarModule,
         MatAutocompleteModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
         TranslateModule.forRoot(),
         RouterTestingModule,
         BrowserAnimationsModule,
@@ -60,6 +54,9 @@ describe('SearchComponent Tests:', () => {
       providers: [
         { provide: TmdbSearchService, useValue: mockTmdbSearchService },
         { provide: Router, useValue: mockRouter}
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
       ]
     })
     .compileComponents();
@@ -73,13 +70,21 @@ describe('SearchComponent Tests:', () => {
 
   // describe('when the value of the search input changes to "brad"', () => {
   //   it('should make a call to multiSearch on the tmdbSearch service', () => {
- 
-  //     component.search.setValue('brad');
+  //     // fixture.nativeElement.querySelector()
+  //     // component.search.setValue('brad');
+  //     // fixture.detectChanges();
+  //     // fixture.whenStable().then(() => {
+  //     //   expect(mockTmdbSearchService.multiSearch).toHaveBeenCalledWith('brad');
+  //     // });
+  //     // expect(1).toBe(1);
+  //     const app = fixture.debugElement.componentInstance;
+  //     const el = fixture.nativeElement.querySelector('input');
+  //     el.value = 'something';
+  //     el.dispatchEvent(new Event('input'));
   //     fixture.detectChanges();
   //     fixture.whenStable().then(() => {
   //       expect(mockTmdbSearchService.multiSearch).toHaveBeenCalledWith('brad');
   //     });
-  //     expect(1).toBe(1);
   //   });
   // });
   describe('when navigating to a movie record', () => {

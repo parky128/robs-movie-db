@@ -1,19 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-  MatCardModule,
-  MatExpansionModule
-} from '@angular/material';
-import {MatListModule} from '@angular/material/list';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { of } from 'rxjs';
 
 import { TvComponent } from './tv.component';
-import { LanguageService } from '../services/language/language.service';
-import { TmdbTvService } from '../services/tmdb-tv/tmdb-tv.service';
 import { ApiConfigService } from '../services/api-config/api-config.service';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('TvComponent', () => {
   let component: TvComponent;
@@ -53,9 +46,6 @@ describe('TvComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ TvComponent ],
       imports: [
-        MatCardModule,
-        MatExpansionModule,
-        MatListModule,
         TranslateModule.forRoot(),
         RouterTestingModule,
         BrowserAnimationsModule
@@ -63,6 +53,9 @@ describe('TvComponent', () => {
       providers: [
         { provide: ActivatedRoute, useValue: activateRouteStub },
         { provide: ApiConfigService, useValue: mockApiConfigService }
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
       ]
     })
     .compileComponents();

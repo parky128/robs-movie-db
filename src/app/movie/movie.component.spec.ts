@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MovieComponent } from './movie.component';
 import { ApiConfigService } from '../services/api-config/api-config.service';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('MovieComponent Tests:', () => {
   let component: MovieComponent;
@@ -47,9 +48,6 @@ describe('MovieComponent Tests:', () => {
     TestBed.configureTestingModule({
       declarations: [ MovieComponent ],
       imports: [
-        MatCardModule,
-        MatExpansionModule,
-        MatListModule,
         TranslateModule.forRoot(),
         RouterTestingModule,
         BrowserAnimationsModule
@@ -57,6 +55,9 @@ describe('MovieComponent Tests:', () => {
       providers: [
         { provide: ActivatedRoute, useValue: activateRouteStub },
         { provide: ApiConfigService, useValue: mockApiConfigService }
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
       ]
     })
     .compileComponents();

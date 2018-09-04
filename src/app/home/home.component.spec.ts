@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ApiConfigService } from '../services/api-config/api-config.service';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('HomeComponent Tests:', () => {
   let component: HomeComponent;
@@ -29,14 +30,15 @@ describe('HomeComponent Tests:', () => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
       imports: [
-        MatCardModule,
-        MatListModule,
         TranslateModule.forRoot(),
         RouterTestingModule
       ],
       providers: [
         { provide: ActivatedRoute, useValue: activateRouteStub },
         { provide: ApiConfigService, useValue: mockApiConfigService }
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
       ]
     })
     .compileComponents();

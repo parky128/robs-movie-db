@@ -6,10 +6,10 @@ import {
   MatOptionModule,
   MatInputModule
 } from '@angular/material';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LanguageComponent } from './language.component';
 import { LanguageService } from '../services/language/language.service';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('LanguageComponent', () => {
   let component: LanguageComponent;
@@ -24,17 +24,14 @@ describe('LanguageComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ LanguageComponent ],
       imports: [
-        MatFormFieldModule,
-        MatSelectModule,
-        MatOptionModule,
-        MatInputModule,
         TranslateModule.forRoot(),
-        FormsModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule
+        NoopAnimationsModule
       ],
       providers: [
         {provide: LanguageService, useValue: mockLanguageService }
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
       ]
     })
     .compileComponents();

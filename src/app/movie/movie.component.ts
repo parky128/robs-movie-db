@@ -15,8 +15,6 @@ export class MovieComponent implements OnInit {
   movie: Movie;
   moviePosterUrl: string;
 
-  private languageSubscription: Subscription;
-
   constructor(
     private route: ActivatedRoute,
     private apiConfigService: ApiConfigService

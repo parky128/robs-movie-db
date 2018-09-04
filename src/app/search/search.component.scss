@@ -21,4 +21,12 @@
   & .mat-focused .placeholder {
     color: transparent;
   }
+  .clear-search {
+    color: unset;
+    background-color: unset;
+    border: 0;
+    &:focus {
+      outline: none;
+    }
+  }
 }

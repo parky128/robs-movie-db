@@ -5,7 +5,14 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getHeaderText() {
+    return element(by.css('h1')).getText();
+  }
+
+  getFirstTrendingItem() {
+    return element.all(by.css('.trending-item')).get(0);
+  }
+  getFirstTrendingItemNavLink() {
+    return element.all(by.css('.trending-item a')).get(0);
   }
 }

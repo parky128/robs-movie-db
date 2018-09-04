@@ -5,7 +5,7 @@ Key Features:
 - Advanced search feature for more custom search types 
   - Note that you can currently search for movies staring chosen actors, actresses, genres and release dates, more criteria options are planned for a future release!
 - Internationalisation support for both English and German
- -- DISCLAIMER: German translation came from Google Translate so if there are any mistakes then please raise an issue on this repo and I will sort asap!
+  - DISCLAIMER: German translation came from Google Translate so if there are any mistakes then please raise an issue on this repo and I will sort asap!
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 

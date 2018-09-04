@@ -4,6 +4,7 @@ import { TVLastEpisode } from './TVLastEpisode.model';
 import { TVNetwork } from './TVNetwork.model';
 import { Genre } from './Genre.model';
 import { TVCreator } from './TVCreator.model';
+import { TVCredits } from './TVCredits.model';
 
 export class TVShow {
   backdrop_path?: string;
@@ -34,4 +35,5 @@ export class TVShow {
   type?: string;
   vote_average?: number;
   vote_count?: number;
+  credits?: Array<TVCredits>;
 }

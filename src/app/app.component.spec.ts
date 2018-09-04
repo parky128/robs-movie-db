@@ -1,27 +1,72 @@
-// import { TestBed, async } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import {
+//   MatToolbarModule, MatProgressSpinnerModule, MatIconModule, MatButtonModule
+// } from '@angular/material';
+// import {MatListModule} from '@angular/material/list';
+// import { TranslateModule, TranslateService } from '@ngx-translate/core';
+// import { RouterTestingModule } from '@angular/router/testing';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { of } from 'rxjs';
+
 // import { AppComponent } from './app.component';
-// describe('AppComponent', () => {
-//   beforeEach(async(() => {
+// import { LanguageService } from './services/language/language.service';
+// import { SpinnerService } from './services/spinner/spinner.service';
+// import { Component } from '@angular/core';
+
+// @Component({ selector: 'app-search', template: ''})
+// class AppSearchStubComponent { }
+// @Component({ selector: 'app-language', template: ''})
+// class AppLanguageStubComponent { }
+
+// describe('AppComponent Tests: ', () => {
+//   let component: AppComponent;
+//   let fixture: ComponentFixture<AppComponent>;
+
+
+//   const mockLanguageService = {
+//     selectedLanguage: of('en'),
+//     getLanguage: jasmine.createSpy().and.returnValue('en')
+//   };
+//   const mockSpinnerService = {
+//     showSpinner: of(false)
+//   };
+
+//   beforeEach(() => {
 //     TestBed.configureTestingModule({
 //       declarations: [
-//         AppComponent
+//         AppComponent,
+//         AppSearchStubComponent,
+//         AppLanguageStubComponent
 //       ],
-//     }).compileComponents();
-//   }));
-//   it('should create the app', async(() => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     const app = fixture.debugElement.componentInstance;
-//     expect(app).toBeTruthy();
-//   }));
-//   it(`should have as title 'my-tmdb-app'`, async(() => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     const app = fixture.debugElement.componentInstance;
-//     expect(app.title).toEqual('my-tmdb-app');
-//   }));
-//   it('should render title in a h1 tag', async(() => {
-//     const fixture = TestBed.createComponent(AppComponent);
+//       imports: [
+//         MatToolbarModule,
+//         MatProgressSpinnerModule,
+//         MatIconModule,
+//         MatButtonModule,
+//         MatListModule,
+//         TranslateModule.forRoot(),
+//         RouterTestingModule,
+//         BrowserAnimationsModule
+//       ],
+//       providers: [
+//         TranslateService,
+//         { provide: SpinnerService, useValue: mockSpinnerService },
+//         { provide: LanguageService, useValue: mockLanguageService }
+//       ]
+//     })
+//     .compileComponents();
+//   });
+
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(AppComponent);
+//     component = fixture.componentInstance;
 //     fixture.detectChanges();
-//     const compiled = fixture.debugElement.nativeElement;
-//     expect(compiled.querySelector('h1').textContent).toContain('Welcome to my-tmdb-app!');
-//   }));
+//   });
+
+//   describe('On initialising the component', () => {
+//     it('should assign the value of the activate route tvShow data property', () => {
+//       //expect(component.tvShow).toEqual(mockTvShow);
+//       expect(1).toBe(1);
+//     });
+//   });
 // });

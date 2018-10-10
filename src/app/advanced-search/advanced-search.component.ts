@@ -59,7 +59,7 @@ export class AdvancedSearchComponent implements OnInit {
 
 
   public addSelectedPerson = (person: PersonSearchResult) => {
-    this.clearSearch();
+    this.search.setValue('');
     this.selectedPersons.push(person);
   }
 

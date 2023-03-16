@@ -11,6 +11,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Getting Stared
 
+Please check you have nodejs installed with `node -v` in your terminal, you should see the nodejs version number installed printed after entering this command, if you don't you probably need nodejs installed. I recommend to use [node version manager](https://github.com/nvm-sh/nvm), and for this version of angular I am using nodejs version `14.19.0`.
+
 Clone this repo to your machine, then from a command prompt, cd into the directory and run `npm install` to install all necessary project dependencies.
 
 Once complete, then run `ng serve` which will build and when ready you can navigate to `http://localhost:4200/` in your browser to start using the application
